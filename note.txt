@@ -1,0 +1,9 @@
+Things to fetch from API:
+
+1. PRs (after sep 30 2020)
+2. PR link (html_url)
+3. Repo link (to check topic) (repository_url)
+4. PR title
+5. labels
+6. state (open / closed)
+7. creation time (created_at)

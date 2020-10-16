@@ -1,13 +1,23 @@
+const { response } = require('express');
 var express = require('express');
 var router = express.Router();
 const fetch = require('node-fetch');
 
 /* GET home page. */
 router.get('/', function (req, res, next) {
-  res.render('index', {
-    title: 'Express',
-    date: new Date(Date.parse('2020-10-13T18:27:05Z')).toUTCString()
-  });
+  // res.render('index', {
+  //   title: 'Express',
+  //   date: new Date(Date.parse('2020-10-13T18:27:05Z')).toUTCString()
+  // });
+  fetch("https://api.github.com/repos/genialkartik/Blog-Socketio/topics",
+    {
+      method: "GET",
+      headers: {
+        Accept: "application/vnd.github.mercy-preview+json"
+      }
+    })
+    .then(response => response.json())
+    .then(data => res.json(data))
 });
 
 // https://api.github.com/search/issues?q=author%3Agenialkartik+type%3Apr
@@ -15,15 +25,22 @@ router.get('/', function (req, res, next) {
 async function getPRs(callback) {
   try {
     let ar_PR = [];
-    const response = await fetch('https://api.github.com/search/issues?q=author:genialkartik+created:>2020-09-28+type:pr')
+    const response = await fetch('https://api.github.com/search/issues?q=author:genialkartik+created:>2020-09-29+type:pr')
     const data = await response.json()
-    console.log(data.items)
-    data.items.map(({ html_url, title, created_at }) => {
+    data.items.map(({ repository_url, html_url, title, labels, state, created_at }) => {
+      var _label = labels.find(e => e.name == 'hacktoberfest-accepted')
+      let label_bool = _label ? true : false
+      
       ar_PR.push({
-        title, html_url, created_at
+        title,
+        html_url,
+        repository_url,
+        label_bool,
+        state,
+        created_at
       })
     })
-    callback(ar_PR)
+    callback(data.items)
   } catch (error) {
     console.log('API error: ' + error)
     callback([])
@@ -31,20 +48,12 @@ async function getPRs(callback) {
 }
 
 router.get('/:username', (req, res) => {
-  // fetch('https://api.github.com/search/issues?q=author:genialkartik+created:>2020-09-28+type:pr')
-  // .then(apires => apires.json())
-  // .then(data => {
-  //   data.items.map(({ html_url, title, state, body }) => {
-  //     let ar_PR = {
-  //       title, html_url, body, state
-  //     }
-  //   })
-  // })
   getPRs(cb => {
     res.send(cb)
   })
 
 })
+
 
 
 module.exports = router;
