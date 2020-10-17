@@ -1,0 +1,54 @@
+.nav {
+    background-color: rgb(147, 194, 219);
+    height: 47.24px;
+    padding:5px;
+}
+.main {
+    background-color: #02203c;
+    text-decoration-color: rgb(255, 255, 255);
+    color: rgb(255, 255, 255);
+    height: 100%;
+    width: 100%;
+}
+.form {
+    align-content: center;
+    margin-right: 9.44px ;
+    width: 40% !important;
+    color: white !important;
+    background-color: rgb(24, 61, 93) !important;
+    justify-content: center !important;
+    
+}
+.center {
+    height: fit-content;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+.profile{
+    display: flex;
+    padding: 0px;
+    justify-content: center;
+    margin:0px 377.95px 0px 0px;
+}
+.form1{
+    margin:113.38px 0px 113.38px 0px;
+    padding: 0px;
+    width: 100%;
+}
+.card-info{
+    margin:37.79px;
+    width: 680.13px;
+    height: 113.38px;
+    background-color: #183d5d;
+    padding: 1.66px; 
+    padding-bottom: 0px;
+}
+.detail-card{
+    margin: 37.79px 0px 37.79px 0px;
+    width: 264.56px;
+    height: 113.38px;
+    background-color: #183d5d;
+    padding: 1.66px; 
+    padding-bottom:0px;
+}
