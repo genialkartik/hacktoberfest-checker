@@ -1,3 +1,9 @@
+https://github.com/settings/applications/1396355
+Client ID
+    c55d4f3e951937805749
+Client Secret
+    afd3d3cc7e82d501dca6033e6eee231da82900ab
+
 Things to fetch from API:
 
 1. PRs (after sep 30 2020)
