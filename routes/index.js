@@ -17,10 +17,26 @@ router.get('/', function (req, res, next) {
       }
     })
     .then(response => response.json())
-    .then(data => res.json(data))
+    .then(data => {
+      console.log(data.name)
+      var _t = data.name.find((e => e == 'hacktoberfest'))
+      res.send(_t ? true : false)
+    })
 });
 
 // https://api.github.com/search/issues?q=author%3Agenialkartik+type%3Apr
+async function getTopics(repo_url) {
+  const user_repo_res = await fetch(repo_url + '/topics',
+    {
+      method: "GET",
+      headers: {
+        Accept: "application/vnd.github.mercy-preview+json"
+      }
+    })
+  const user_data = await user_repo_res.json()
+  var _topic = user_data.name.find(e => e == 'hacktoberfest')
+  return (_topic ? true : false)
+}
 
 async function getPRs(callback) {
   try {
@@ -30,17 +46,19 @@ async function getPRs(callback) {
     data.items.map(({ repository_url, html_url, title, labels, state, created_at }) => {
       var _label = labels.find(e => e.name == 'hacktoberfest-accepted')
       let label_bool = _label ? true : false
-      
+      var cb = getTopics(repository_url)
+      console.log(cb)
       ar_PR.push({
         title,
         html_url,
         repository_url,
+        cb,
         label_bool,
         state,
         created_at
       })
     })
-    callback(data.items)
+    callback(ar_PR)
   } catch (error) {
     console.log('API error: ' + error)
     callback([])
@@ -57,3 +75,9 @@ router.get('/:username', (req, res) => {
 
 
 module.exports = router;
+
+// Client ID
+//     85fb922b08a0b9bb0496
+// Client Secret
+//     2ebf230e6396c7fa226d304892ea7771c63ffce3
+

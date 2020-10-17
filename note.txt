@@ -7,3 +7,27 @@ Things to fetch from API:
 5. labels
 6. state (open / closed)
 7. creation time (created_at)
+
+Data passes from Backend to Frontend:
+
+1. Left Column: 
+  - PR title
+  - PR link
+  - Repo link (in which PR is created)
+  - Time (Date and Time)
+2. Right Column:
+  - Label OR Topic boolean (true/false)
+  - Open OR Merged boolean (true/false)
+  - Public Repo boolean (always true, no bool value is required to be passed from backend)
+  - Created in October (always true, no bool value is required to be passed from backend)
+  - Labelled Spam/Invalid (true/false) (default=>false) (if label spam or Invalid is added by maintainer then PR is Invalid)
+Example: 
+{
+  title: 'This is Title of PR',
+  html_url: 'Link of PR',
+  repository_url: 'Link of Repo',
+  label_topic: true,
+  state: true, // open = true / closed = false
+  spam: false, (true/false),
+  created_at: 523412352, //(time in miliseconds), use new Date(Date.parse('2020-10-13T18:27:05Z')).toUTCString()
+}
