@@ -37,3 +37,5 @@ Example:
   spam: false, (true/false),
   created_at: 523412352, //(time in miliseconds), use new Date(Date.parse('2020-10-13T18:27:05Z')).toUTCString()
 }
+
+https://dev.to/davidepacilio/35-free-react-templates-and-themes-32ci
