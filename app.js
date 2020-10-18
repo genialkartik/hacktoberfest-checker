@@ -23,10 +23,6 @@ app.use('/', require('./routes/index'))
 
 app.use(morgan('tiny'));
 
-// app.get('*', (req, res) => {
-//     res.sendFile(path.join(__dirname, 'build', 'index.html'));
-// });
-
 app.listen(port, () => {
     console.log('Listening on PORT: ' + port)
 })
