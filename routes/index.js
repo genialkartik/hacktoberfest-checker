@@ -4,10 +4,10 @@ var router = express.Router();
 const fetch = require('node-fetch');
 const axios = require('axios')
 
-let ar_PR = [];
-
 async function getPRs(username, callback) {
   try {
+	let ar_PR = [];
+    
     const response = await fetch(`https://api.github.com/search/issues?q=author:${username}+created:>2020-09-29+type:pr`)
     const data = await response.json()
     var t = data.items.length
@@ -31,8 +31,9 @@ async function getPRs(username, callback) {
 
       ar_PR.push({
         title: item[i].title,
-        html_url: item[i].html_url,
-        repo_url: item[i].repository_url,
+        pr_url: item[i].html_url,
+        repo_name: item[i].html_url.substring(item[i].html_url.indexOf('/', 18)+1, item[i].html_url.lastIndexOf('/', item[i].html_url.lastIndexOf('/')-1)),
+        repo_url: item[i].html_url.substring(0, item[i].html_url.lastIndexOf('/', item[i].html_url.lastIndexOf('/')-1)),
         topic_bool,
         label_bool,
         state: item[i].state,
@@ -48,7 +49,6 @@ async function getPRs(username, callback) {
 }
 
 router.post('/', (req, res) => {
-  console.log(req.body)
   getPRs(req.body.uname, cb => {
     if (cb.length)
       res.json(cb)
