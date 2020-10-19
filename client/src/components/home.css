@@ -1,0 +1,60 @@
+.nav {
+    background-color: rgb(147, 194, 219);
+    height: 9.6%;
+    padding:0.36%;
+}
+.main {
+    background-color: #02203c;
+    text-decoration-color: rgb(255, 255, 255);
+    color: rgb(255, 255, 255);
+    height: 100%;
+    width: 100%;
+}
+.form {
+    align-content: center;
+    margin-right: 0.69% ;
+    width: 40% !important;
+    color: white !important;
+    background-color: rgb(24, 61, 93) !important;
+    justify-content: center !important;
+    
+}
+input:-internal-autofill-selected {
+    appearance: menulist-button;
+    background-color: rgb(24, 61, 93) !important;
+    background-image: none !important;
+    color: -internal-light-dark(black, white) !important;
+}
+.center {
+    height: fit-content;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+.profile{
+    display: flex;
+    padding: 0px;
+    justify-content: center;
+    margin:0% 27.66% 0% 0%;
+}
+.form1{
+    margin:8.30% 0% 5.15% 0%;
+    padding: 0%;
+    width: 100%;
+}
+.card-info{
+    margin:1.88% 1.46% 0% 2.76%;
+    width: 50.21%;
+    height: 113.38px;
+    background-color: #183d5d;
+    padding: 1.66px; 
+    padding-bottom: 0px;
+}
+.detail-card{
+    margin:1.88% 1.46% 0% 2.76%;
+    width: 19.36%;
+    height: 113.38px;
+    background-color: #183d5d;
+    padding: 1.66px; 
+    padding-bottom:0px;
+}

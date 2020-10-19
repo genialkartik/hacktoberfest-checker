@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import axios from "axios";
 import { Container, Row, Col, Form, Button, Image, Card } from "react-bootstrap";
 import { CircleProgress } from "react-gradient-progress";
-import './home.css';
+import './home.css'
 import announcement from "./announcement.png";
 
 //
