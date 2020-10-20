@@ -1,60 +1,139 @@
 .nav {
-    background-color: rgb(147, 194, 219);
-    height: 9.6%;
-    padding:0.36%;
+  background-color: rgb(147, 194, 219);
+  height: 9.6%;
+  padding:0.36%;
 }
 .main {
-    background-color: #02203c;
-    text-decoration-color: rgb(255, 255, 255);
-    color: rgb(255, 255, 255);
-    height: 100%;
-    width: 100%;
+  background-color: #02203c;
+  text-decoration-color: rgb(255, 255, 255);
+  color: rgb(255, 255, 255);
+  height: 100%;
+  width: 100%;
 }
 .form {
-    align-content: center;
-    margin-right: 0.69% ;
-    width: 40% !important;
-    color: white !important;
-    background-color: rgb(24, 61, 93) !important;
-    justify-content: center !important;
-    
+  align-content: center;
+  color: white !important;
+  background-color: rgb(24, 61, 93) !important;
+  justify-content: center !important;
+  
 }
 input:-internal-autofill-selected {
-    appearance: menulist-button;
-    background-color: rgb(24, 61, 93) !important;
-    background-image: none !important;
-    color: -internal-light-dark(black, white) !important;
+  appearance: menulist-button;
+  background-color: rgb(24, 61, 93) !important;
+  background-image: none !important;
+  color: -internal-light-dark(black, white) !important;
 }
 .center {
-    height: fit-content;
-    display: flex;
-    align-items: center;
-    justify-content: center;
+  height: fit-content;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 20px 0;
 }
 .profile{
-    display: flex;
-    padding: 0px;
-    justify-content: center;
-    margin:0% 27.66% 0% 0%;
+  display: flex;
+  justify-content: center;
+}
+.profile div {
+  text-align: center;
 }
 .form1{
-    margin:8.30% 0% 5.15% 0%;
-    padding: 0%;
-    width: 100%;
+  margin: 0 0 20px;
+  padding: 5px 0 20px;
+  width: 100%;
+}
+.avatarBox {
+  width: 100px;
+}
+.formBox {
+  width: calc(100% - 100px);
+}
+.formBox.row {
+  margin: 0;
+}
+.pullbox {
+  transition: 0.3s ease-in-out;
+}
+.pullbox:hover {
+  transform: scale(1.05);
+  cursor: pointer;
+}
+.pullbox .row{
+  display: flex;
+  justify-content: space-between;
+  box-shadow: 0px 0px 5px 0px #ccc;
+  margin-bottom: 20px;
+  border-radius: 8px;
+  background-color: #183d5d;
+  padding: 1rem;
 }
 .card-info{
-    margin:1.88% 1.46% 0% 2.76%;
-    width: 50.21%;
-    height: 113.38px;
-    background-color: #183d5d;
-    padding: 1.66px; 
-    padding-bottom: 0px;
+  background-color: transparent;
+  justify-content: center;
+}
+.card-info p {
+  margin: 0;
+}
+.card-info a {
+  color: powderblue;
 }
 .detail-card{
-    margin:1.88% 1.46% 0% 2.76%;
-    width: 19.36%;
-    height: 113.38px;
-    background-color: #183d5d;
-    padding: 1.66px; 
-    padding-bottom:0px;
+  border-radius: 0;
+  border: none;
+  border-left: 0.25rem solid;
 }
+.detail-card p {
+  margin: 0;
+  font-size: 12px;
+  font-weight: 600;
+  height: 30px;
+  line-height: 30px;
+}
+
+.loader {
+  position: fixed;
+  top: 0;
+  left: 0;
+  background: rgba(20,20,20,0.4);
+  bottom: 0;
+  right: 0;
+}
+.loadscreen {
+  width: 60px;
+  height: 60px;
+  border: 2px solid #ccc;
+  border-radius: 50%;
+  border-left: none;
+  box-shadow: 0px 0px 5px 1px #777;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  background-color: #113545;
+  transform: translate(-50%, -50%);
+  animation: loader infinite 500ms;
+}
+
+@keyframes loader{
+  to{
+    transform: rotate(0deg);
+  }
+  from{
+    transform: rotate(-360deg);
+  }
+}
+
+@media screen and (max-width:575.99px){
+  .avatarBox{
+    display: none;
+  }
+  .formBox{
+    width: 100%;
+  }
+  .formBox input{
+    margin-bottom: 20px;
+  }
+  .hacktoberfest-imgbox img{
+    width: 100%;height: 100%;
+  }
+}
+
