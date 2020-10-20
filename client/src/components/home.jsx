@@ -52,7 +52,7 @@ function Home() {
   }
 
   return (
-    <div>
+    <div className={"appbody"}>
       <Container fluid className={"nav center"}>
         <Row className={"container text-center"}>
           <Col ><img src={announcement} height="40px" alt="announcement" /> &nbsp;Don't forget to
@@ -93,48 +93,51 @@ function Home() {
           </div>
         </Form>
 
-
-        <div className={"profile"} style={ bool ? { padding:"10px" } : {} }>
-          <div>
-            {bool ? <CircleProgress percentage={((count / 4) * 100)} width={80} /> : ''}
-            { message !== '' ? <p>{message}</p> : '' }
-          </div>
-        </div>
-
-        <div className={"container"}>{bool ?
-          <div className={"row justify-content-center"}>
-            {data.map((d) => (
-              <div className={"col-10 pullbox"}>
-                <div className={"row"}>
-                  <Card className={"col-12 col-sm-6 col-lg-7 card-info"}>
-                    <p style={{ fontSize: "3mm" }}>{new Date(Date.parse(d.created_at)).toUTCString()}</p>
-                    <p>You submitted 
-                      <a href={d.pr_url} target="_blank" rel="noopener noreferrer" > {d.title}</a> to 
-                      <a href={d.repo_url} target="_blank" rel="noopener noreferrer" > {d.repo_name} </a>
-                    </p>
-                  </Card>
-                  <Card className={"col-12 col-sm-6 col-lg-4 detail-card"} style={d.label_bool || d.topic_bool ? { borderColor: "#2ecc71",backgroundColor:"rgba(46,204,113,0.1)" } : { borderColor: "#e74c3c",backgroundColor:"rgba(231,76,60,0.1)" }} >
-                    <p>
-                      Label/Topic : {d.label_bool || d.topic_bool ?
-                        <img src={require('./correct.png')} height="30px" width="30px" alt="topic" /> :
-                        <img src={require('./wrong.png')} height="30px" width="30px" alt="label" />}</p>
-                    <p>Pull Request Status : &nbsp;  {d.state}</p>
-                    <p>Public Repository : &nbsp;   <img src={require('./correct.png')} height="30px" width="30px" alt="topic" /> </p>
-                    <p>Review Period : {d.review}</p>
-                  </Card>
-                </div>
-              </div>
-            ))}
-          </div>
-
-          : ''
-        }</div>
-
-        <div className="loader" style={loaderToggle?{ display:'block'} : {display:'none'}}>
+        {
+        loaderToggle?
+        <div className="loader">
           <div className="loadscreen">
           </div>
         </div>
+        :
+        <div>
+          <div className={"profile"} style={ bool ? { padding:"10px" } : {} }>
+            <div>
+              {bool ? <CircleProgress percentage={((count / 4) * 100)} width={80} /> : ''}
+              { message !== '' ? <p>{message}</p> : '' }
+            </div>
+          </div>
 
+          <div className={"container"}>{bool ?
+            <div className={"row justify-content-center"}>
+              {data.map((d) => (
+                <div className={"col-10 pullbox"}>
+                  <div className={"row"}>
+                    <Card className={"col-12 col-sm-6 col-lg-7 card-info"}>
+                      <p style={{ fontSize: "3mm" }}>{new Date(Date.parse(d.created_at)).toUTCString()}</p>
+                      <p>You submitted 
+                        <a href={d.pr_url} target="_blank" rel="noopener noreferrer" > {d.title}</a> to 
+                        <a href={d.repo_url} target="_blank" rel="noopener noreferrer" > {d.repo_name} </a>
+                      </p>
+                    </Card>
+                    <Card className={"col-12 col-sm-6 col-lg-4 detail-card"} style={d.label_bool || d.topic_bool ? { borderColor: "#2ecc71",backgroundColor:"rgba(46,204,113,0.1)" } : { borderColor: "#e74c3c",backgroundColor:"rgba(231,76,60,0.1)" }} >
+                      <p>
+                        Label/Topic : {d.label_bool || d.topic_bool ?
+                          <img src={require('./correct.png')} height="30px" width="30px" alt="topic" /> :
+                          <img src={require('./wrong.png')} height="30px" width="30px" alt="label" />}</p>
+                      <p>Pull Request Status : &nbsp;  {d.state}</p>
+                      <p>Public Repository : &nbsp;   <img src={require('./correct.png')} height="30px" width="30px" alt="topic" /> </p>
+                      <p>Review Period : {d.review}</p>
+                    </Card>
+                  </div>
+                </div>
+              ))}
+            </div>
+
+            : ''
+          }</div>
+        </div>
+        }
 
         <footer className={"center"} style={{marginTop:bool?"50px":"20px",textAlign:'center' }}>
           <p>Attention : This site is just a fan made and it is not affiliated by <a href="https://hacktoberfest.digitalocean.com/" target="_blank" rel="noopener noreferrer">Hacktoberfest</a></p>

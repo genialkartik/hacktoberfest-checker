@@ -1,7 +1,15 @@
+.appbody {
+  min-height: 100vh;
+}
 .nav {
   background-color: rgb(147, 194, 219);
-  height: 9.6%;
-  padding:0.36%;
+  height: 40px !important;
+  padding: 0 !important;
+  font-size: 85%;
+}
+.appbody .main {
+  min-height: calc(100vh - 40px);
+  display: grid;
 }
 .main {
   background-color: #02203c;
@@ -61,11 +69,15 @@ input:-internal-autofill-selected {
 .pullbox .row{
   display: flex;
   justify-content: space-between;
-  box-shadow: 0px 0px 5px 0px #ccc;
+  box-shadow: 4px 4px 0px 2px black;
   margin-bottom: 20px;
   border-radius: 8px;
   background-color: #183d5d;
   padding: 1rem;
+}
+.pullbox .card {
+  border: none;
+  border-radius: 0;
 }
 .card-info{
   background-color: transparent;
@@ -75,11 +87,11 @@ input:-internal-autofill-selected {
   margin: 0;
 }
 .card-info a {
-  color: powderblue;
+  color: lightpink;
+  display: block;
+  text-decoration: none;
 }
-.detail-card{
-  border-radius: 0;
-  border: none;
+.pullbox .detail-card.card {
   border-left: 0.25rem solid;
 }
 .detail-card p {
@@ -91,25 +103,18 @@ input:-internal-autofill-selected {
 }
 
 .loader {
-  position: fixed;
-  top: 0;
-  left: 0;
-  background: rgba(20,20,20,0.4);
-  bottom: 0;
-  right: 0;
+  padding: 10px;
+  width: 100%;
 }
 .loadscreen {
+  margin: 0 auto;
   width: 60px;
   height: 60px;
   border: 2px solid #ccc;
   border-radius: 50%;
   border-left: none;
   box-shadow: 0px 0px 5px 1px #777;
-  position: absolute;
-  top: 50%;
-  left: 50%;
   background-color: #113545;
-  transform: translate(-50%, -50%);
   animation: loader infinite 500ms;
 }
 
