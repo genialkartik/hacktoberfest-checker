@@ -6,13 +6,13 @@ const axios = require('axios')
 
 async function getPRs(username, callback) {
   try {
-	let ar_PR = [];
-    
+    let ar_PR = [];
+
     const response = await fetch(`https://api.github.com/search/issues?q=author:${username}+created:>2020-09-29+type:pr`)
     const data = await response.json()
     var t = data.items.length
     var item = data.items;
-
+    
     for (var i = 0; i < t; i++) {
       var _label = item[i].labels.find(e => e.name == 'hacktoberfest-accepted')
       let label_bool = _label ? true : false
@@ -32,8 +32,8 @@ async function getPRs(username, callback) {
       ar_PR.push({
         title: item[i].title,
         pr_url: item[i].html_url,
-        repo_name: item[i].html_url.substring(item[i].html_url.indexOf('/', 18)+1, item[i].html_url.lastIndexOf('/', item[i].html_url.lastIndexOf('/')-1)),
-        repo_url: item[i].html_url.substring(0, item[i].html_url.lastIndexOf('/', item[i].html_url.lastIndexOf('/')-1)),
+        repo_name: item[i].html_url.substring(item[i].html_url.indexOf('/', 18) + 1, item[i].html_url.lastIndexOf('/', item[i].html_url.lastIndexOf('/') - 1)),
+        repo_url: item[i].html_url.substring(0, item[i].html_url.lastIndexOf('/', item[i].html_url.lastIndexOf('/') - 1)),
         topic_bool,
         label_bool,
         state: item[i].state,
@@ -41,7 +41,7 @@ async function getPRs(username, callback) {
       })
     }
 
-    callback(ar_PR)
+    callback(ar_PR, item[0].user.avatar_url)
   } catch (error) {
     console.log('API error: ' + error)
     callback([])
@@ -49,16 +49,17 @@ async function getPRs(username, callback) {
 }
 
 router.post('/', (req, res) => {
-  getPRs(req.body.uname, cb => {
+  console.log(req.body.uname)
+  getPRs(req.body.uname, (cb, userimg) => {
     if (cb.length)
-      res.json(cb)
+      res.json({
+      	cb: cb,
+      	user_img: userimg
+      })
     else
       res.json([])
   })
 
 })
 
-
-
 module.exports = router;
-

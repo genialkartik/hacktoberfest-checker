@@ -47,7 +47,7 @@ input:-internal-autofill-selected {
 }
 .form1{
   margin: 0 0 20px;
-  padding: 5px 0 20px;
+  padding: 5px 0 90px;
   width: 100%;
 }
 .avatarBox {
@@ -66,10 +66,18 @@ input:-internal-autofill-selected {
   transform: scale(1.05);
   cursor: pointer;
 }
+
+.pullbox:hover .row{
+  box-shadow: 1px 8px 10px rgba(0, 0, 0, 0.7);
+}
 .pullbox .row{
   display: flex;
   justify-content: space-between;
+<<<<<<< HEAD:frontend/src/components/home.css
+  box-shadow: 1px 8px 10px rgba(0, 0, 0, .4);
+=======
   box-shadow: 4px 4px 0px 2px black;
+>>>>>>> 6c723e702e310db379a13882574092d00a69dabf:client/src/components/home.css
   margin-bottom: 20px;
   border-radius: 8px;
   background-color: #183d5d;
@@ -88,7 +96,10 @@ input:-internal-autofill-selected {
 }
 .card-info a {
   color: lightpink;
+<<<<<<< HEAD:frontend/src/components/home.css
+=======
   display: block;
+>>>>>>> 6c723e702e310db379a13882574092d00a69dabf:client/src/components/home.css
   text-decoration: none;
 }
 .pullbox .detail-card.card {
