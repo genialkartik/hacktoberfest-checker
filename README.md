@@ -1,5 +1,7 @@
 # Hacktoberfest Checker
 
+[![Open Issues](https://img.shields.io/github/issues/genialkartik/hacktoberfest-checker?style=for-the-badge&logo=github)](https://github.com/genialkartik/hacktoberfest-checker/issues) [![Forks](https://img.shields.io/github/forks/genialkartik/hacktoberfest-checker?style=for-the-badge&logo=github)](https://github.com/genialkartik/hacktoberfest-checker/network/members) [![Stars](https://img.shields.io/github/stars/genialkartik/hacktoberfest-checker?style=for-the-badge&logo=reverbnation)](https://github.com/code-monk08/connect-four/stargazers) ![Open Source Love](https://img.shields.io/badge/Open%20Source-%E2%99%A5-red?style=for-the-badge&logo=open-source-initiative)
+
 Helpful to know how close are you to get a tee/tshirt or why you're PRs are invalid according to the latest policy of [Hacktoberfest](https://hacktoberfest.digitalocean.com/hacktoberfest-update).
 
 Check Your Hacktoberfest Status: **[hacktoberfest.gitfork.tech](https://hacktoberfest.gitfork.tech)**
@@ -60,9 +62,14 @@ A PR will be counted as invalid and the user will get the tee/tshirt only when:
   
 ## A big THANKS to Contributors
 
+[![Contributors](https://img.shields.io/github/contributors/genialkartik/hacktoberfest-checker?style=for-the-badge)](https://github.com//genialkartik/Macfolio/graphs/contributors)
+
+### Core Contributors
   - [Ankur Jarial](https://github.com/JarialAnkur)
   - [Madan Lal](https://github.com/NorinMp143)
 
 ## License
+
+[![License](https://img.shields.io/github/license/genialkartik/hacktoberfest-checker?style=for-the-badge)](https://github.com/genialkartik/Macfolio/blob/master/LICENSE)
 
 MIT © 2015-2020 [Kartik Tyagi](https://github.com/genialkartik)
