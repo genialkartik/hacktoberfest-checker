@@ -72,4 +72,4 @@ A PR will be counted as invalid and the user will get the tee/tshirt only when:
 
 [![License](https://img.shields.io/github/license/genialkartik/hacktoberfest-checker?style=for-the-badge)](https://github.com/genialkartik/Macfolio/blob/master/LICENSE)
 
-MIT © 2015-2020 [Kartik Tyagi](https://github.com/genialkartik)
+MIT © 2020 [Kartik Tyagi](https://github.com/genialkartik)
