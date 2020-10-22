@@ -9,7 +9,7 @@ import announcement from "./announcement.png";
 function Home() {
   const [username, setUsername] = useState({ uname: "" });
   const [data, Setdata] = useState([]);
-  const [userImg, setUserImg] = useState("https://hacktoberfest.digitalocean.com/assets/og-hf20-cf92d1a3bfc78883ea79dbac1518f1a4f1585e23eb69337ea730447cb70fa777.png")
+  const [userImg, setUserImg] = useState("https://hacktoberfest.digitalocean.com/assets/h-dark-d1a5f262f5aa5936d3bc526365938d98f3946e669f6e2cd9ae1e7a848c57e351.svg")
   const [bool, Setbool] = useState(false);
   const [count, Setcount] = useState(0);
   const [message, Setmessage] = useState('');
