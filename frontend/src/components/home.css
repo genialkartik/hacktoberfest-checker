@@ -131,6 +131,28 @@ input:-internal-autofill-selected {
   }
 }
 
+.details-of-site {
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+  margin-top: 20px;
+}
+.details-of-site .part {
+  margin: 10px;
+}
+.details-of-site .part .fa {
+  margin-right: 8px;
+}
+
+footer a {
+  color: lightcoral;
+  font-weight: bold;
+}
+footer a:hover {
+  color: aqua;
+  text-decoration: none;
+}
+
 @media screen and (max-width:575.99px){
   .avatarBox{
     display: none;
