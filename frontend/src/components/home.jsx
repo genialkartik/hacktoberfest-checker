@@ -87,6 +87,7 @@ function Home() {
                 onChange={(e) => {
                   setUsername(e.target.value)
                 }}
+                required
               />
               <Button className={"col-6 col-sm-3 col-md-2"} variant="outline-primary"
                 type="submit"
@@ -142,7 +143,7 @@ function Home() {
             </div>
         }
         
-        <div className="details-of-site">
+        <div className="details-of-site" style={{ marginTop: bool ? "50px" : "20px" }}>
           <div className="part">
             <a target="_blank" href="https://github.com/genialkartik/hacktoberfest-checker" rel="noopener noreferrer" className="btn btn-success">
               <span className={"fa fa-github"}></span> 
@@ -158,7 +159,7 @@ function Home() {
         </div>
 
 
-        <footer className={"center"} style={{ marginTop: bool ? "50px" : "20px", textAlign: 'center' }}>
+        <footer className={"center"} style={{ textAlign: 'center' }}>
           <p>Attention : This site is just a fan made and it is not affiliated by <a href="https://hacktoberfest.digitalocean.com/" target="_blank" rel="noopener noreferrer">Hacktoberfest</a></p>
         </footer>
       </div>
