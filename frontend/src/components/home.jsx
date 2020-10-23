@@ -141,6 +141,22 @@ function Home() {
               }</div>
             </div>
         }
+        
+        <div className="details-of-site">
+          <div className="part">
+            <a target="_blank" href="https://github.com/genialkartik/hacktoberfest-checker" rel="noopener noreferrer" className="btn btn-success">
+              <span className={"fa fa-github"}></span> 
+              Github
+            </a>
+          </div>
+          <div className="part">
+            <a target="_blank" href="https://github.com/genialkartik/hacktoberfest-checker/graphs/contributors" rel="noopener noreferrer" className="btn btn-info">
+              <span className={"fa fa-code"}></span> 
+              Contributors
+            </a>
+          </div>
+        </div>
+
 
         <footer className={"center"} style={{ marginTop: bool ? "50px" : "20px", textAlign: 'center' }}>
           <p>Attention : This site is just a fan made and it is not affiliated by <a href="https://hacktoberfest.digitalocean.com/" target="_blank" rel="noopener noreferrer">Hacktoberfest</a></p>
