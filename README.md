@@ -23,7 +23,7 @@ This question is the answer of creation of **[Hacktoberfest-Checker](https://hac
 A PR will be counted as valid and the user will get the tee/tshirt only when:
 - Submitted during the `month of October`
 - Submitted in a `public repo`
-- The PR is labelled as `hacktoberfest-accepted` by a maintainer OR ubmitted in a repo with the `hacktoberfest topic`
+- The PR is labelled as `hacktoberfest-accepted` by a maintainer OR submitted in a repo with the `hacktoberfest topic`
 - The PR is `merged` OR the PR has been `approved`
 
 ## Requirements
