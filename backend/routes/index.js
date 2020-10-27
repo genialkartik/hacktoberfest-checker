@@ -12,7 +12,14 @@ async function getPRs(username, callback) {
     const data = await response.json()
     var t = data.items.length
     var item = data.items;
-    
+    if(t===0){
+      console.log("No pull request made in this month")
+      const response1=await fetch(`https://api.github.com/users/${username}`)
+      const data1=await response1.json()
+      console.log(data1)
+      callback(ar_PR,data1.avatar_url,true)
+    }
+    else{
     for (var i = 0; i < t; i++) {
       var _label = item[i].labels.find(e => e.name == 'hacktoberfest-accepted')
       let label_bool = _label ? true : false
@@ -40,24 +47,27 @@ async function getPRs(username, callback) {
         created_at: item[i].created_at
       })
     }
-
-    callback(ar_PR, item[0].user.avatar_url)
+  
+    callback(ar_PR, item[0].user.avatar_url,false)
+  }
   } catch (error) {
     console.log('API error: ' + error)
-    callback([])
+    
   }
 }
 
 router.post('/', (req, res) => {
-  console.log(req.body.uname)
-  getPRs(req.body.uname, (cb, userimg) => {
+  console.log(req.body)
+  getPRs(req.body.uname, (cb, userimg,noprs) => {
     if (cb.length)
       res.json({
       	cb: cb,
-      	user_img: userimg
+        user_img: userimg,
+        noprs:noprs
       })
     else
-      res.json([])
+      res.json({user_img:userimg,
+        noprs:noprs})
   })
 
 })
