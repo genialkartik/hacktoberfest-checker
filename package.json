@@ -1,8 +1,8 @@
 {
-  "name": "hacktoberfest-runner",
+  "name": "hacktoberfest-checker",
   "version": "1.0.0",
   "description": "runner for backend and frontend packages",
-  "main": "index.js",
+  "main": "backend/app.js",
   "scripts": {
     "start:frontend": "cd frontend && npm run start",
     "start:backend": "cd backend && npm run start",
@@ -10,7 +10,7 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/eLeontev/hacktoberfest-checker.git"
+    "url": "git+https://github.com/genialkartik/hacktoberfest-checker.git"
   },
-  "homepage": "https://github.com/eLeontev/hacktoberfest-checker#readme"
+  "homepage": "https://github.com/genialkartik/hacktoberfest-checker#readme"
 }
