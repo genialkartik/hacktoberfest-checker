@@ -18,8 +18,19 @@ function Home() {
   const handleSubmit = async (e) => {
     e.preventDefault();
     SetLoader(true);
-    await axios.post("https://hacktoberfestcheck.herokuapp.com", { uname: username }).then((res => {
-      if (res.status === 200) {
+    await axios.post("http://localhost:2020", { uname: username }).then((res => {
+      //Check weather User made pull request is made or no
+      if(res.data.noprs){
+        
+        SetLoader(false);
+        Setbool(false)
+        Setdata('');
+        setUserImg(res.data.user_img)
+        Setmessage("No pull request is made in October Month")
+      }
+
+      else {
+        if (res.status === 200) {
         var data = res.data.cb;
         setUserImg(res.data.user_img)
         for (var i = 1; i < res.data.cb.length; i++) {
@@ -49,6 +60,7 @@ function Home() {
         Setbool(true);
         SetLoader(false);
       }
+    }
 
     }))
   }
@@ -86,6 +98,10 @@ function Home() {
                 name="uname"
                 onChange={(e) => {
                   setUsername(e.target.value)
+                  Setmessage('')
+                  Setbool(false)
+                  Setdata('');
+                  setUserImg("https://hacktoberfest.digitalocean.com/assets/h-dark-d1a5f262f5aa5936d3bc526365938d98f3946e669f6e2cd9ae1e7a848c57e351.svg")
                 }}
                 required
               />
