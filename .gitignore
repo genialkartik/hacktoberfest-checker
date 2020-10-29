@@ -111,3 +111,4 @@ Procfile
 build
 *config*.*
 *credentials*.*
+package-lock.json
