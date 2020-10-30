@@ -41,7 +41,7 @@ A PR will be counted as valid and the user will get the tee/tshirt only when:
 * For frontend:
   * `$ cd frontend`
   * `$ npm i`
-  * `$ npm start
+  * `$ npm start`
   *  goto `http://localhost:3000`
 
 * For Backend
