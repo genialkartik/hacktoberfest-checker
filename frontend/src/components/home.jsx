@@ -20,47 +20,53 @@ function Home() {
     SetLoader(true);
     await axios.post("http://localhost:2020", { uname: username }).then((res => {
       //Check weather User made pull request is made or no
-      if(res.data.noprs){
-        
+      if (!res.data.user_img) {
+        SetLoader(false);
+        Setbool(false)
+        Setdata('');
+        setUserImg("https://hacktoberfest.digitalocean.com/assets/h-dark-d1a5f262f5aa5936d3bc526365938d98f3946e669f6e2cd9ae1e7a848c57e351.svg")
+        Setmessage("Ugh!! INVALID username")
+      }
+      else if (res.data.noprs && res.data.user_img) {
         SetLoader(false);
         Setbool(false)
         Setdata('');
         setUserImg(res.data.user_img)
-        Setmessage("No pull request is made in October Month")
+        Setmessage("Damn! why didn't you made any PR in October. Well, Better Luck next time.")
       }
 
       else {
         if (res.status === 200) {
-        var data = res.data.cb;
-        setUserImg(res.data.user_img)
-        for (var i = 1; i < res.data.cb.length; i++) {
-          var d = new Date(res.data.cb[i].created_at);
-          d.setDate(d.getDate() + 14);
+          var data = res.data.cb;
+          setUserImg(res.data.user_img)
+          for (var i = 1; i < res.data.cb.length; i++) {
+            var d = new Date(res.data.cb[i].created_at);
+            d.setDate(d.getDate() + 14);
 
-          if (new Date() > d || new Date() === d)
-            data[i].review = "Completed";
+            if (new Date() > d || new Date() === d)
+              data[i].review = "Completed";
 
-          else {
-            var diff = Math.abs(d.getTime() - (new Date().getTime()));
-            var diffDays = Math.ceil(diff / (1000 * 3600 * 24));
-            data[i].review = diffDays + " days left";
+            else {
+              var diff = Math.abs(d.getTime() - (new Date().getTime()));
+              var diffDays = Math.ceil(diff / (1000 * 3600 * 24));
+              data[i].review = diffDays + " days left";
+            }
           }
-        }
-        Setdata(data);
+          Setdata(data);
 
-        if (res.data.cb.length >= 4) {
-          Setcount(4);
-          Setmessage("Congrats!! You have done 4 PR(s)")
+          if (res.data.cb.length >= 4) {
+            Setcount(4);
+            Setmessage("Congrats!! You have done 4 PR(s)")
+          }
+          else {
+            var Pr_left = 4 - res.data.cb.length;
+            Setcount(4 - Pr_left);
+            Setmessage("You're just " + Pr_left + " PR(s) away to get a tee/tree")
+          }
+          Setbool(true);
+          SetLoader(false);
         }
-        else {
-          var Pr_left = 4 - res.data.cb.length;
-          Setcount(4 - Pr_left);
-          Setmessage("You're just " + Pr_left + " PR(s) away to get a tee/tree")
-        }
-        Setbool(true);
-        SetLoader(false);
       }
-    }
 
     }))
   }
@@ -82,7 +88,7 @@ function Home() {
           />
         </div>
 
-        <h1 className={"center text-center"} style={{ color: "#FF8AE2", fontFamily: "sans"}}>Check Your Progress</h1>
+        <h1 className={"center text-center"} style={{ color: "#FF8AE2", fontFamily: "sans" }}>Check Your Progress</h1>
 
 
         <Form onSubmit={handleSubmit} autoComplete="off" inline className={"row justify-content-center form1"}>
@@ -158,17 +164,17 @@ function Home() {
               }</div>
             </div>
         }
-        
+
         <div className="details-of-site" style={{ marginTop: bool ? "50px" : "20px" }}>
           <div className="part">
             <a target="_blank" href="https://github.com/genialkartik/hacktoberfest-checker" rel="noopener noreferrer" className="btn btn-success">
-              <span className={"fa fa-github"}></span> 
+              <span className={"fa fa-github"}></span>
               Github
             </a>
           </div>
           <div className="part">
             <a target="_blank" href="https://github.com/genialkartik/hacktoberfest-checker/graphs/contributors" rel="noopener noreferrer" className="btn btn-info">
-              <span className={"fa fa-code"}></span> 
+              <span className={"fa fa-code"}></span>
               Contributors
             </a>
           </div>
