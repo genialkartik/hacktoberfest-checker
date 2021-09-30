@@ -2,7 +2,7 @@
   min-height: 100vh;
 }
 .nav {
-  background-color: rgb(147, 194, 219);
+  background-color: rgb(218, 64, 8);
   height: 40px !important;
   padding: 0 !important;
   font-size: 85%;
@@ -12,7 +12,7 @@
   display: grid;
 }
 .main {
-  background-color: #02203c;
+  background-color: #ffffff;
   text-decoration-color: rgb(255, 255, 255);
   color: rgb(255, 255, 255);
   height: 100%;
@@ -21,15 +21,19 @@
 .form {
   align-content: center;
   color: white !important;
-  background-color: rgb(24, 61, 93) !important;
+  background-color: white !important;
+  border-color: rgb(218, 64, 8);
+  margin-left: 1rem;
+  border-radius: 4px;
+  border-width: 2px;
   justify-content: center !important;
   
 }
 input:-internal-autofill-selected {
   appearance: menulist-button;
-  background-color: rgb(24, 61, 93) !important;
+  background-color: orangered !important;
   background-image: none !important;
-  color: -internal-light-dark(black, white) !important;
+  color: -internal-light-dark(black, rgb(209, 29, 29)) !important;
 }
 .center {
   height: fit-content;
@@ -76,7 +80,7 @@ input:-internal-autofill-selected {
   box-shadow: 1px 8px 10px rgba(0, 0, 0, .4);
   margin-bottom: 20px;
   border-radius: 8px;
-  background-color: #183d5d;
+  background-color: rgb(218, 64, 8);
   padding: 1rem;
 }
 .pullbox .card {
@@ -118,10 +122,24 @@ input:-internal-autofill-selected {
   border-radius: 50%;
   border-left: none;
   box-shadow: 0px 0px 5px 1px #777;
-  background-color: #113545;
+  background-color: rgb(218, 64, 8);
   animation: loader infinite 500ms;
 }
-
+.btn
+{
+  background-color: rgb(255, 255, 255);
+  border-color: orangered;
+  border-radius: 5px;
+  border-width: 2px;
+  font-weight: bold;
+  font-family: 'Robot';
+  color: orangered;
+  
+}
+btn:hover{
+  background-color: orangered;
+  color: white;
+}
 @keyframes loader{
   to{
     transform: rotate(0deg);
@@ -129,6 +147,28 @@ input:-internal-autofill-selected {
   from{
     transform: rotate(-360deg);
   }
+}
+
+.details-of-site {
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+  margin-top: 20px;
+}
+.details-of-site .part {
+  margin: 10px;
+}
+.details-of-site .part .fa {
+  margin-right: 8px;
+}
+
+footer a {
+  color: lightcoral;
+  font-weight: bold;
+}
+footer a:hover {
+  color: aqua;
+  text-decoration: none;
 }
 
 @media screen and (max-width:575.99px){
