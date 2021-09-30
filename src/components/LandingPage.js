@@ -10,15 +10,18 @@ import {
   Card,
 } from 'react-bootstrap';
 import { CircleProgress } from 'react-gradient-progress';
-import './home.css';
-import announcement from './announcement.png';
+import '../components/assets/Css/home.css';
+import announcement from './assets/images/announcement.png';
+import HackImg from './assets/images/logohck.png';
 import { getPRs } from '../api';
+import Githublogo from '../components/assets/images/githublogo.png';
+import Blog from '../components/assets/images/blog.png';
 
 function LandingPage() {
   const [username, setUsername] = useState({ uname: '' });
   const [data, Setdata] = useState([]);
   const [userImg, setUserImg] = useState(
-    'https://external-content.duckduckgo.com/iu/?u=https%3A%2F%2Fres.cloudinary.com%2Fpracticaldev%2Fimage%2Ffetch%2Fs--ajGtUgSU--%2Fc_limit%2Cf_auto%2Cfl_progressive%2Cq_80%2Cw_180%2Fhttps%3A%2F%2Fdev-to-uploads.s3.amazonaws.com%2Fuploads%2Fbadge%2Fbadge_image%2F80%2Fhacktoberfest2020-badge_2.png&f=1&nofb=1'
+    'https://hacktoberfest.digitalocean.com/_nuxt/img/sign-up-accent-right.2faed05.svg'
   );
   const [bool, Setbool] = useState(false);
   const [count, Setcount] = useState(0);
@@ -74,26 +77,29 @@ function LandingPage() {
               href="https://hacktoberfest.digitalocean.com/"
               target="_blank"
               rel="noopener noreferrer"
+             
             >
               {' '}
-              register
+              <strong style={{color:'white'}}>Register</strong>
+            
             </a>{' '}
-            to be eligible for the tee or tree!
+            to be eligible for the hacktoberfest!
           </Col>
         </Row>
       </Container>
 
       <div className={'main'}>
         <div className={'center hacktoberfest-imgbox'}>
-          <Image src={require('./hack.svg')} height="260px" />
+          <Image src={require('../components/assets/images/hack.svg')} height="260px" />
         </div>
-
-        <h1
-          className={'center text-center'}
-          style={{ color: '#FF8AE2', fontFamily: 'sans' }}
-        >
+         <div className={'center text-center'}
+          style={{ color: 'grey', fontFamily: 'sans' }}>
+           <Image src={HackImg} />
+           <h1 style={{marginLeft:'1rem'}}>
           Check Your Progress
         </h1>
+         </div>
+       
 
         <Form
           onSubmit={handleSubmit}
@@ -125,6 +131,14 @@ function LandingPage() {
             </div>
           </div>
         </Form>
+        <div class="row justify-content-center">
+          <a href="https://github.com/genialkartik/hacktoberfest-checker/tree/main" className={' col-6 col-sm-3 col-md-2'}>
+          <Image src={Githublogo} width="120px" height="100px" />
+            </a>
+            <a href="" className={' col-6 col-sm-3 col-md-2'}>
+          <Image src={Blog} width="120px" height="120px" />
+            </a>
+        </div>
 
         {loaderToggle ? (
           <div className="loader">
@@ -199,14 +213,14 @@ function LandingPage() {
                             {d._has_hacktoberfest_label ||
                             d._has_hacktoberfest_topic ? (
                               <img
-                                src={require('./correct.png')}
+                                src={require('../components/assets/images/correct.png')}
                                 height="30px"
                                 width="30px"
                                 alt="topic"
                               />
                             ) : (
                               <img
-                                src={require('./wrong.png')}
+                                src={require('../components/assets/images/wrong.png')}
                                 height="23px"
                                 width="23px"
                                 alt="label"
@@ -217,7 +231,7 @@ function LandingPage() {
                           <p>
                             Public Repository : &nbsp;{' '}
                             <img
-                              src={require('./correct.png')}
+                              src={require('../components/assets/images/correct.png')}
                               height="30px"
                               width="30px"
                               alt="topic"

@@ -1,7 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import { Box } from '@mui/material';
-import CSLlogo2 from './hack.jpg';
+import CSLlogo2 from '../components/assets/images/hack.svg';
 
 Logo.propTypes = {
   sx: PropTypes.object,
