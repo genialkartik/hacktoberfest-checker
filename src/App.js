@@ -5,6 +5,13 @@ import Routers from './routes';
 import { getPRs } from './api';
 
 function App(props) {
+  React.useEffect(() => {
+    (async () => {
+      const resp = await getPRs('genialkartik');
+      console.log(resp);
+    })();
+  }, [props]);
+
   return (
     <div className="App">
       <Router>
