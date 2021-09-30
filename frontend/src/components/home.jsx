@@ -12,19 +12,27 @@ import {
 import { CircleProgress } from 'react-gradient-progress';
 import './home.css';
 import announcement from './announcement.png';
-
+import Grid from '@mui/material/Grid';
+import { styled } from '@mui/material/styles';
+import Paper from '@mui/material/Paper';
+import Hacklogo from '../components/logohck.png';
 //
 function Home() {
+
   const [username, setUsername] = useState({ uname: '' });
   const [data, Setdata] = useState([]);
   const [userImg, setUserImg] = useState(
-    'https://external-content.duckduckgo.com/iu/?u=https%3A%2F%2Fres.cloudinary.com%2Fpracticaldev%2Fimage%2Ffetch%2Fs--ajGtUgSU--%2Fc_limit%2Cf_auto%2Cfl_progressive%2Cq_80%2Cw_180%2Fhttps%3A%2F%2Fdev-to-uploads.s3.amazonaws.com%2Fuploads%2Fbadge%2Fbadge_image%2F80%2Fhacktoberfest2020-badge_2.png&f=1&nofb=1'
-  );
+'https://hacktoberfest.digitalocean.com/_nuxt/img/sign-up-accent-right.2faed05.svg'  );
   const [bool, Setbool] = useState(false);
   const [count, Setcount] = useState(0);
   const [message, Setmessage] = useState('');
   const [loaderToggle, SetLoader] = useState(false);
-
+  const Item = styled(Paper)(({ theme }) => ({
+    ...theme.typography.body2,
+    padding: theme.spacing(1),
+    textAlign: 'center',
+    color: theme.palette.text.secondary,
+  }));
   const handleSubmit = async (e) => {
     e.preventDefault();
     SetLoader(true);
@@ -37,7 +45,7 @@ function Home() {
           Setbool(false);
           Setdata('');
           setUserImg(
-            'https://external-content.duckduckgo.com/iu/?u=https%3A%2F%2Fres.cloudinary.com%2Fpracticaldev%2Fimage%2Ffetch%2Fs--ajGtUgSU--%2Fc_limit%2Cf_auto%2Cfl_progressive%2Cq_80%2Cw_180%2Fhttps%3A%2F%2Fdev-to-uploads.s3.amazonaws.com%2Fuploads%2Fbadge%2Fbadge_image%2F80%2Fhacktoberfest2020-badge_2.png&f=1&nofb=1'
+            'https://ex.com%2Fpracticaldev%2Fimage%2Ffetch%2Fs--ajGtUgSU--%2Fc_limit%2Cf_auto%2Cfl_progressive%2Cq_80%2Cw_180%2Fhttps%3A%2F%2Fdev-to-uploads.s3.amazonaws.com%2Fuploads%2Fbadge%2Fbadge_image%2F80%2Fhacktoberfest2020-badge_2.png&f=1&nofb=1'
           );
           Setmessage('Ugh!! INVALID username');
         } else if (res.data.noprs && res.data.user_img) {
@@ -107,13 +115,15 @@ function Home() {
         <div className={'center hacktoberfest-imgbox'}>
           <Image src={require('./hack.svg')} height="260px" />
         </div>
-
-        <h1
-          className={'center text-center'}
-          style={{ color: '#FF8AE2', fontFamily: 'sans' }}
-        >
-          Check Your Progress
+     <div  className={'center text-center'}
+          style={{ color: 'Grey', fontFamily: 'sans' }} >
+     <Image src={Hacklogo} /> 
+        <h1 style={{marginLeft : '1rem'}}>
+         
+           Check Your Progress
         </h1>
+     </div>
+       
 
         <Form
           onSubmit={handleSubmit}
@@ -121,13 +131,13 @@ function Home() {
           inline
           className={'row justify-content-center form1'}
         >
-          <div className={'col-12 col-sm-10 col-lg-8 d-flex'}>
-            <div className={'avatarBox'}>
+           <div className={'col-12 col-sm-10 col-lg-8 d-flex'}>
+            <Grid container spacing={2}>
+              <Grid item xs={12}>
+                <Item>  
               <Image roundedCircle src={userImg} width="100px" height="100px" />
-            </div>
-            <div className="formBox row align-items-center justify-content-around">
-              <Form.Control
-                className={'col-12 col-sm-8 col-md-9 form'}
+                 <Form.Control
+                className={' form'}
                 type="text"
                 placeholder="GitHub Username"
                 name="uname"
@@ -137,20 +147,27 @@ function Home() {
                   Setbool(false);
                   Setdata('');
                   setUserImg(
-                    'https://external-content.duckduckgo.com/iu/?u=https%3A%2F%2Fres.cloudinary.com%2Fpracticaldev%2Fimage%2Ffetch%2Fs--ajGtUgSU--%2Fc_limit%2Cf_auto%2Cfl_progressive%2Cq_80%2Cw_180%2Fhttps%3A%2F%2Fdev-to-uploads.s3.amazonaws.com%2Fuploads%2Fbadge%2Fbadge_image%2F80%2Fhacktoberfest2020-badge_2.png&f=1&nofb=1'
+                    'https://hacktoberfest.digitalocean.com/_nuxt/img/sign-up-accent-right.2faed05.svg'
                   );
                 }}
                 required
               />
-              <Button
-                className={'col-6 col-sm-3 col-md-2'}
-                variant="outline-primary"
+              </Item>
+          </Grid>
+        <Grid item xs={12}>
+          <Item> 
+            <Button
+                className={' btn col-6 col-sm-3 col-md-2'}
+                
                 type="submit"
               >
                 Check
               </Button>
+          </Item>
+        </Grid>
+      </Grid>
             </div>
-          </div>
+          
         </Form>
 
         {loaderToggle ? (
