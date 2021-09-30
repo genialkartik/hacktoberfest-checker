@@ -1,5 +1,6 @@
 .appbody {
   min-height: 100vh;
+ overflow: hidden;
 }
 .nav {
   background-color: rgb(218, 64, 8);
@@ -10,17 +11,19 @@
 .appbody .main {
   min-height: calc(100vh - 40px);
   display: grid;
+ 
+  
 }
 .main {
   background-color: #ffffff;
   text-decoration-color: rgb(255, 255, 255);
-  color: rgb(255, 255, 255);
+  color: rgb(216, 90, 52);
   height: 100%;
   width: 100%;
 }
 .form {
   align-content: center;
-  color: white !important;
+  color: rgb(214, 62, 62) !important;
   background-color: white !important;
   border-color: rgb(218, 64, 8);
   margin-left: 1rem;
@@ -134,6 +137,8 @@ input:-internal-autofill-selected {
   font-weight: bold;
   font-family: 'Robot';
   color: orangered;
+  margin-right: 1rem;
+ 
   
 }
 btn:hover{
@@ -163,7 +168,7 @@ btn:hover{
 }
 
 footer a {
-  color: lightcoral;
+  color: rgb(216, 21, 14);
   font-weight: bold;
 }
 footer a:hover {
