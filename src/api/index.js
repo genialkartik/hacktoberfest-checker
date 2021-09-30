@@ -8,7 +8,6 @@ module.exports.getPRs = async (username) => {
     //   `https://api.github.com/users/${username}`
     // );
     // const userData = await user_response.json();
-    const userData = dummy_user;
     // if (!userData.id) {
     //   throw 'Invalid Username';
     // }

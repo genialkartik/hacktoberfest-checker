@@ -1,5 +1,7 @@
 .appbody {
   min-height: 100vh;
+  overflow: hidden;
+  background-color: #f4f0e1;
 }
 .nav {
   background-color: rgb(218, 64, 8);
@@ -10,24 +12,24 @@
 .appbody .main {
   min-height: calc(100vh - 40px);
   display: grid;
+  background-color: #f4f0e1;
 }
 .main {
   background-color: #ffffff;
   text-decoration-color: rgb(255, 255, 255);
-  color: rgb(255, 255, 255);
+  color: #dbe8d9;
   height: 100%;
   width: 100%;
 }
 .form {
   align-content: center;
-  color: white !important;
-  background-color: white !important;
+  color: rgb(214, 62, 62) !important;
+  background-color: #dbe8d9 !important;
   border-color: rgb(218, 64, 8);
   margin-left: 1rem;
   border-radius: 4px;
   border-width: 2px;
   justify-content: center !important;
-  
 }
 input:-internal-autofill-selected {
   appearance: menulist-button;
@@ -42,14 +44,15 @@ input:-internal-autofill-selected {
   justify-content: center;
   padding: 20px 0;
 }
-.profile{
+.profile {
   display: flex;
   justify-content: center;
+  color: #2b3531;
 }
 .profile div {
   text-align: center;
 }
-.form1{
+.form1 {
   margin: 0 0 20px;
   padding: 5px 0 90px;
   width: 100%;
@@ -71,23 +74,23 @@ input:-internal-autofill-selected {
   cursor: pointer;
 }
 
-.pullbox:hover .row{
+.pullbox:hover .row {
   box-shadow: 1px 8px 10px rgba(0, 0, 0, 0.7);
 }
-.pullbox .row{
+.pullbox .row {
   display: flex;
   justify-content: space-between;
-  box-shadow: 1px 8px 10px rgba(0, 0, 0, .4);
+  box-shadow: 1px 8px 10px rgba(0, 0, 0, 0.4);
   margin-bottom: 20px;
-  border-radius: 8px;
-  background-color: rgb(218, 64, 8);
+  border-radius: 14px;
+  background-color: #677662;
   padding: 1rem;
 }
 .pullbox .card {
   border: none;
   border-radius: 0;
 }
-.card-info{
+.card-info {
   background-color: transparent;
   justify-content: center;
 }
@@ -95,7 +98,8 @@ input:-internal-autofill-selected {
   margin: 0;
 }
 .card-info a {
-  color: lightpink;
+  color: #fff;
+  font-size: 25px;
   display: block;
   text-decoration: none;
 }
@@ -125,8 +129,7 @@ input:-internal-autofill-selected {
   background-color: rgb(218, 64, 8);
   animation: loader infinite 500ms;
 }
-.btn
-{
+.btn {
   background-color: rgb(255, 255, 255);
   border-color: orangered;
   border-radius: 5px;
@@ -134,17 +137,17 @@ input:-internal-autofill-selected {
   font-weight: bold;
   font-family: 'Robot';
   color: orangered;
-  
+  margin-right: 1rem;
 }
-btn:hover{
+btn:hover {
   background-color: orangered;
   color: white;
 }
-@keyframes loader{
-  to{
+@keyframes loader {
+  to {
     transform: rotate(0deg);
   }
-  from{
+  from {
     transform: rotate(-360deg);
   }
 }
@@ -163,7 +166,7 @@ btn:hover{
 }
 
 footer a {
-  color: lightcoral;
+  color: rgb(216, 21, 14);
   font-weight: bold;
 }
 footer a:hover {
@@ -171,18 +174,18 @@ footer a:hover {
   text-decoration: none;
 }
 
-@media screen and (max-width:575.99px){
-  .avatarBox{
+@media screen and (max-width: 575.99px) {
+  .avatarBox {
     display: none;
   }
-  .formBox{
+  .formBox {
     width: 100%;
   }
-  .formBox input{
+  .formBox input {
     margin-bottom: 20px;
   }
-  .hacktoberfest-imgbox img{
-    width: 100%;height: 100%;
+  .hacktoberfest-imgbox img {
+    width: 100%;
+    height: 100%;
   }
 }
-
