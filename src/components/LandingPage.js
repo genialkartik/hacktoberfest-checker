@@ -1,21 +1,14 @@
 import React, { useState } from 'react';
 import axios from 'axios';
-import {
-  Container,
-  Row,
-  Col,
-  Form,
-  Button,
-  Image,
-  Card,
-} from 'react-bootstrap';
+import { Container, Row, Col, Form, Image, Card } from 'react-bootstrap';
 import { CircleProgress } from 'react-gradient-progress';
-import '../components/assets/Css/home.css';
+import '../components/assets/css/home.css';
 import announcement from './assets/images/announcement.png';
 import HackImg from './assets/images/logohck.png';
 import { getPRs } from '../api';
 import Githublogo from '../components/assets/images/githublogo.png';
 import Blog from '../components/assets/images/blog.png';
+import { Button } from '@mui/material';
 
 function LandingPage() {
   const [username, setUsername] = useState({ uname: '' });
@@ -77,11 +70,9 @@ function LandingPage() {
               href="https://hacktoberfest.digitalocean.com/"
               target="_blank"
               rel="noopener noreferrer"
-             
             >
               {' '}
-              <strong style={{color:'white'}}>Register</strong>
-            
+              <strong style={{ color: 'white' }}>Register</strong>
             </a>{' '}
             to be eligible for the hacktoberfest!
           </Col>
@@ -90,16 +81,18 @@ function LandingPage() {
 
       <div className={'main'}>
         <div className={'center hacktoberfest-imgbox'}>
-          <Image src={require('../components/assets/images/hack.svg')} height="260px" />
+          <Image
+            src={require('../components/assets/images/hack.svg')}
+            height="260px"
+          />
         </div>
-         <div className={'center text-center'}
-          style={{ color: 'grey', fontFamily: 'sans' }}>
-           <Image src={HackImg} />
-           <h1 style={{marginLeft:'1rem'}}>
-          Check Your Progress
-        </h1>
-         </div>
-       
+        <div
+          className={'center text-center'}
+          style={{ color: 'grey', fontFamily: 'sans' }}
+        >
+          <Image src={HackImg} />
+          <h1 style={{ marginLeft: '1rem' }}>Check Your Progress</h1>
+        </div>
 
         <Form
           onSubmit={handleSubmit}
@@ -123,7 +116,8 @@ function LandingPage() {
               />
               <Button
                 className={'col-6 col-sm-3 col-md-2'}
-                variant="outline-primary"
+                style={{ backgroundColor: '#f74700' }}
+                variant="contained"
                 type="submit"
               >
                 Check
@@ -131,14 +125,6 @@ function LandingPage() {
             </div>
           </div>
         </Form>
-        <div class="row justify-content-center">
-          <a href="https://github.com/genialkartik/hacktoberfest-checker/tree/main" className={' col-6 col-sm-3 col-md-2'}>
-          <Image src={Githublogo} width="120px" height="100px" />
-            </a>
-            <a href="" className={' col-6 col-sm-3 col-md-2'}>
-          <Image src={Blog} width="120px" height="120px" />
-            </a>
-        </div>
 
         {loaderToggle ? (
           <div className="loader">
@@ -158,49 +144,19 @@ function LandingPage() {
             </div>
 
             <div className={'container'}>
-              {bool ? (
+              {bool && (
                 <div className={'row justify-content-center'}>
                   {data.user_prs.map((d) => (
                     <div className={'col-10 pullbox'} key={d.title}>
                       <div className={'row'}>
-                        <Card className={'col-12 col-sm-6 col-lg-7 card-info'}>
-                          <p>
-                            You submitted
-                            <b>
-                              <a
-                                href={d.pr_url}
-                                target="_blank"
-                                rel="noopener noreferrer"
-                              >
-                                {' '}
-                                {d.title}
-                              </a>
-                            </b>{' '}
-                            to
-                            <b>
-                              <a
-                                href={d.repo_url}
-                                target="_blank"
-                                rel="noopener noreferrer"
-                              >
-                                {' '}
-                                {d.repo_name}{' '}
-                              </a>
-                            </b>
-                          </p>
-                          <p style={{ fontSize: '3mm' }}>
-                            <br />
-                            {new Date(Date.parse(d.created_at)).toUTCString()}
-                          </p>
-                        </Card>
                         <Card
-                          className={'col-12 col-sm-6 col-lg-4 detail-card'}
+                          className={'col-12 col-sm-6 col-lg-5 detail-card'}
                           style={
                             d._has_hacktoberfest_label ||
                             d._has_hacktoberfest_topic
                               ? {
                                   borderColor: '#2ecc71',
-                                  backgroundColor: 'rgba(46,204,113,0.1)',
+                                  backgroundColor: '#2B3531',
                                 }
                               : {
                                   borderColor: '#e74c3c',
@@ -227,7 +183,10 @@ function LandingPage() {
                               />
                             )}
                           </p>
-                          <p>Pull Request Status : &nbsp; {d.state}</p>
+                          <p>
+                            Pull Request Status : &nbsp;{' '}
+                            {d.state?.toUpperCase()}
+                          </p>
                           <p>
                             Public Repository : &nbsp;{' '}
                             <img
@@ -239,17 +198,58 @@ function LandingPage() {
                           </p>
                           <p>Review Period : {d.review}</p>
                         </Card>
+                        <Card className={'col-12 col-sm-6 col-lg-7 card-info'}>
+                          <p>
+                            You submitted
+                            <b>
+                              <a
+                                href={d.pr_url}
+                                target="_blank"
+                                rel="noopener noreferrer"
+                              >
+                                {' '}
+                                {d.title?.toUpperCase()}
+                              </a>
+                            </b>{' '}
+                            to
+                            <b>
+                              <a
+                                href={d.repo_url}
+                                target="_blank"
+                                rel="noopener noreferrer"
+                              >
+                                {' '}
+                                {d.repo_name?.toUpperCase()}{' '}
+                              </a>
+                            </b>
+                          </p>
+                          <p style={{ fontSize: '3mm' }}>
+                            <br />
+                            {new Date(
+                              Date.parse(d.created_at)
+                            ).toLocaleString()}
+                          </p>
+                        </Card>
                       </div>
                     </div>
                   ))}
                 </div>
-              ) : (
-                ''
               )}
             </div>
           </div>
         )}
 
+        <div class="row justify-content-center">
+          <a
+            href="https://github.com/genialkartik/hacktoberfest-checker/tree/main"
+            className={' col-6 col-sm-3 col-md-2'}
+          >
+            <Image src={Githublogo} width="120px" height="100px" />
+          </a>
+          <a href="" className={' col-6 col-sm-3 col-md-2'}>
+            <Image src={Blog} width="120px" height="120px" />
+          </a>
+        </div>
         <footer
           className={'center'}
           style={{ marginTop: bool ? '50px' : '20px', textAlign: 'center' }}
