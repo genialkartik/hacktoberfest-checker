@@ -21,7 +21,8 @@
     "react-dom": "^16.14.0",
     "react-gradient-progress": "^1.0.3",
     "react-router-dom": "^6.0.0-beta.5",
-    "react-scripts": "3.4.3"
+    "react-scripts": "3.4.3",
+    "styled-components": "^5.3.1"
   },
   "scripts": {
     "start": "react-scripts start",
