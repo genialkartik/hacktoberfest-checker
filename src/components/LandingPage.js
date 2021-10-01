@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import {
   Container,
   Row,
@@ -11,7 +11,7 @@ import {
 import '../components/assets/css/home.css';
 import announcement from './assets/images/announcement.png';
 import HackImg from './assets/images/logohck.png';
-import { getPRs } from '../api';
+import GithubApi from '../api/index';
 import {
   Avatar,
   AvatarGroup,
@@ -20,7 +20,6 @@ import {
   CircularProgress,
   Typography,
 } from '@mui/material';
-import { contributors } from '../api/dummu';
 
 function CircularProgressWithLabel(props) {
   return (
@@ -46,7 +45,7 @@ function CircularProgressWithLabel(props) {
   );
 }
 
-function LandingPage() {
+function LandingPage(props) {
   const [username, setUsername] = useState({ uname: '' });
   const [userImg, setUserAvatar] = useState('');
   const [bool, setBool] = useState(false);
@@ -54,6 +53,14 @@ function LandingPage() {
   const [message, setMessage] = useState('');
   const [loaderToggle, setLoader] = useState(false);
   const [pullRequests, setPullRequest] = useState([]);
+  const [contributors, setContributors] = useState([]);
+
+  useEffect(() => {
+    (async () => {
+      const contri = await GithubApi.getContributors();
+      setContributors(contri || []);
+    })();
+  }, [props]);
 
   const handleSubmit = async (e) => {
     e.preventDefault();
@@ -62,12 +69,11 @@ function LandingPage() {
       if (!username) {
         throw 'User not found';
       }
-      const resp = await getPRs(username);
-      console.log(resp);
+      const resp = await GithubApi.getPRs(username);
       if (resp.err) {
         throw resp.err || 'Something gone wrong!';
       }
-      if (resp.user_prs?.length <= 0) {
+      if (resp.user_prs.length <= 0) {
         throw 'No contribution found!';
       }
       setPullRequest(resp.user_prs || []);
@@ -94,7 +100,7 @@ function LandingPage() {
       } else {
         var Pr_left = 4 - resp.user_prs?.length;
         setCount(4 - Pr_left);
-        setMessage("You're just " + Pr_left + ' PR(s) away to get a tee/tree');
+        setMessage("You're just " + Pr_left + ' PR(s) away to get a tee');
       }
       setBool(true);
       setLoader(false);
@@ -300,7 +306,10 @@ function LandingPage() {
             color: '#dbe8d9',
           }}
         >
-          <p class="row justify-content-center">
+          <div
+            style={{ marginBlock: 20 }}
+            className="row justify-content-center"
+          >
             <a
               href="https://github.com/genialkartik/hacktoberfest-checker/graphs/contributors"
               target="_blank"
@@ -309,9 +318,12 @@ function LandingPage() {
               {' '}
               Contributors
             </a>
-          </p>
-          <p class="row justify-content-center">
-            <AvatarGroup max={contributors.length}>
+          </div>
+          <div
+            style={{ marginBlock: 20 }}
+            className="row justify-content-center"
+          >
+            <AvatarGroup max={contributors.length || 2}>
               {contributors?.map((contrib, idx) => (
                 <Avatar
                   alt={contrib.login}
@@ -320,8 +332,11 @@ function LandingPage() {
                 />
               ))}
             </AvatarGroup>
-          </p>
-          <p class="row justify-content-center">
+          </div>
+          <div
+            style={{ marginBlock: 20 }}
+            className="row justify-content-center"
+          >
             Attention : This site is just a fan made and it is not affiliated by{' '}
             <a
               href="https://hacktoberfest.digitalocean.com/"
@@ -331,8 +346,11 @@ function LandingPage() {
               {' '}
               Hacktoberfest
             </a>
-          </p>
-          <p class="row justify-content-center">
+          </div>
+          <div
+            style={{ marginBlock: 20 }}
+            className="row justify-content-center"
+          >
             <ButtonGroup variant="text" aria-label="text button group">
               <Button
                 sx={{ color: '#ff4400' }}
@@ -359,7 +377,7 @@ function LandingPage() {
                 Participate
               </Button>
             </ButtonGroup>
-          </p>
+          </div>
         </footer>
       </div>
     </div>
