@@ -4,15 +4,16 @@
   background-color: #f4f0e1;
 }
 .nav {
-  background-color: rgb(218, 64, 8);
+  background-color: #dbe8d9;
   height: 40px !important;
   padding: 0 !important;
   font-size: 85%;
+  color: #ff4400;
 }
 .appbody .main {
   min-height: calc(100vh - 40px);
   display: grid;
-  background-color: #f4f0e1;
+  background-color: #2b3531;
 }
 .main {
   background-color: #ffffff;
@@ -27,9 +28,10 @@
   background-color: #dbe8d9 !important;
   border-color: rgb(218, 64, 8);
   margin-left: 1rem;
-  border-radius: 4px;
+  border-radius: 50px;
   border-width: 2px;
   justify-content: center !important;
+  padding: 20px;
 }
 input:-internal-autofill-selected {
   appearance: menulist-button;
@@ -43,11 +45,13 @@ input:-internal-autofill-selected {
   align-items: center;
   justify-content: center;
   padding: 20px 0;
+  color: #2b3531;
 }
 .profile {
   display: flex;
   justify-content: center;
-  color: #2b3531;
+  color: #dbe8d9;
+  margin-bottom: 40px;
 }
 .profile div {
   text-align: center;
@@ -93,6 +97,7 @@ input:-internal-autofill-selected {
 .card-info {
   background-color: transparent;
   justify-content: center;
+  padding-left: 30px;
 }
 .card-info p {
   margin: 0;
@@ -136,7 +141,7 @@ input:-internal-autofill-selected {
   border-width: 2px;
   font-weight: bold;
   font-family: 'Robot';
-  color: orangered;
+  color: #ff4400;
   margin-right: 1rem;
 }
 btn:hover {
