@@ -1,3 +1,255 @@
+export const contributors = [
+  {
+    login: 'genialkartik',
+    id: 32240906,
+    node_id: 'MDQ6VXNlcjMyMjQwOTA2',
+    avatar_url: 'https://avatars.githubusercontent.com/u/32240906?v=4',
+    gravatar_id: '',
+    url: 'https://api.github.com/users/genialkartik',
+    html_url: 'https://github.com/genialkartik',
+    followers_url: 'https://api.github.com/users/genialkartik/followers',
+    following_url:
+      'https://api.github.com/users/genialkartik/following{/other_user}',
+    gists_url: 'https://api.github.com/users/genialkartik/gists{/gist_id}',
+    starred_url:
+      'https://api.github.com/users/genialkartik/starred{/owner}{/repo}',
+    subscriptions_url:
+      'https://api.github.com/users/genialkartik/subscriptions',
+    organizations_url: 'https://api.github.com/users/genialkartik/orgs',
+    repos_url: 'https://api.github.com/users/genialkartik/repos',
+    events_url: 'https://api.github.com/users/genialkartik/events{/privacy}',
+    received_events_url:
+      'https://api.github.com/users/genialkartik/received_events',
+    type: 'User',
+    site_admin: false,
+    contributions: 58,
+  },
+  {
+    login: 'NorinMp143',
+    id: 36108781,
+    node_id: 'MDQ6VXNlcjM2MTA4Nzgx',
+    avatar_url: 'https://avatars.githubusercontent.com/u/36108781?v=4',
+    gravatar_id: '',
+    url: 'https://api.github.com/users/NorinMp143',
+    html_url: 'https://github.com/NorinMp143',
+    followers_url: 'https://api.github.com/users/NorinMp143/followers',
+    following_url:
+      'https://api.github.com/users/NorinMp143/following{/other_user}',
+    gists_url: 'https://api.github.com/users/NorinMp143/gists{/gist_id}',
+    starred_url:
+      'https://api.github.com/users/NorinMp143/starred{/owner}{/repo}',
+    subscriptions_url: 'https://api.github.com/users/NorinMp143/subscriptions',
+    organizations_url: 'https://api.github.com/users/NorinMp143/orgs',
+    repos_url: 'https://api.github.com/users/NorinMp143/repos',
+    events_url: 'https://api.github.com/users/NorinMp143/events{/privacy}',
+    received_events_url:
+      'https://api.github.com/users/NorinMp143/received_events',
+    type: 'User',
+    site_admin: false,
+    contributions: 6,
+  },
+  {
+    login: 'JarialAnkur',
+    id: 49793242,
+    node_id: 'MDQ6VXNlcjQ5NzkzMjQy',
+    avatar_url: 'https://avatars.githubusercontent.com/u/49793242?v=4',
+    gravatar_id: '',
+    url: 'https://api.github.com/users/JarialAnkur',
+    html_url: 'https://github.com/JarialAnkur',
+    followers_url: 'https://api.github.com/users/JarialAnkur/followers',
+    following_url:
+      'https://api.github.com/users/JarialAnkur/following{/other_user}',
+    gists_url: 'https://api.github.com/users/JarialAnkur/gists{/gist_id}',
+    starred_url:
+      'https://api.github.com/users/JarialAnkur/starred{/owner}{/repo}',
+    subscriptions_url: 'https://api.github.com/users/JarialAnkur/subscriptions',
+    organizations_url: 'https://api.github.com/users/JarialAnkur/orgs',
+    repos_url: 'https://api.github.com/users/JarialAnkur/repos',
+    events_url: 'https://api.github.com/users/JarialAnkur/events{/privacy}',
+    received_events_url:
+      'https://api.github.com/users/JarialAnkur/received_events',
+    type: 'User',
+    site_admin: false,
+    contributions: 5,
+  },
+  {
+    login: 'dependabot[bot]',
+    id: 49699333,
+    node_id: 'MDM6Qm90NDk2OTkzMzM=',
+    avatar_url: 'https://avatars.githubusercontent.com/in/29110?v=4',
+    gravatar_id: '',
+    url: 'https://api.github.com/users/dependabot%5Bbot%5D',
+    html_url: 'https://github.com/apps/dependabot',
+    followers_url: 'https://api.github.com/users/dependabot%5Bbot%5D/followers',
+    following_url:
+      'https://api.github.com/users/dependabot%5Bbot%5D/following{/other_user}',
+    gists_url:
+      'https://api.github.com/users/dependabot%5Bbot%5D/gists{/gist_id}',
+    starred_url:
+      'https://api.github.com/users/dependabot%5Bbot%5D/starred{/owner}{/repo}',
+    subscriptions_url:
+      'https://api.github.com/users/dependabot%5Bbot%5D/subscriptions',
+    organizations_url: 'https://api.github.com/users/dependabot%5Bbot%5D/orgs',
+    repos_url: 'https://api.github.com/users/dependabot%5Bbot%5D/repos',
+    events_url:
+      'https://api.github.com/users/dependabot%5Bbot%5D/events{/privacy}',
+    received_events_url:
+      'https://api.github.com/users/dependabot%5Bbot%5D/received_events',
+    type: 'Bot',
+    site_admin: false,
+    contributions: 5,
+  },
+  {
+    login: 'saumyasrivastava08',
+    id: 57553757,
+    node_id: 'MDQ6VXNlcjU3NTUzNzU3',
+    avatar_url: 'https://avatars.githubusercontent.com/u/57553757?v=4',
+    gravatar_id: '',
+    url: 'https://api.github.com/users/saumyasrivastava08',
+    html_url: 'https://github.com/saumyasrivastava08',
+    followers_url: 'https://api.github.com/users/saumyasrivastava08/followers',
+    following_url:
+      'https://api.github.com/users/saumyasrivastava08/following{/other_user}',
+    gists_url:
+      'https://api.github.com/users/saumyasrivastava08/gists{/gist_id}',
+    starred_url:
+      'https://api.github.com/users/saumyasrivastava08/starred{/owner}{/repo}',
+    subscriptions_url:
+      'https://api.github.com/users/saumyasrivastava08/subscriptions',
+    organizations_url: 'https://api.github.com/users/saumyasrivastava08/orgs',
+    repos_url: 'https://api.github.com/users/saumyasrivastava08/repos',
+    events_url:
+      'https://api.github.com/users/saumyasrivastava08/events{/privacy}',
+    received_events_url:
+      'https://api.github.com/users/saumyasrivastava08/received_events',
+    type: 'User',
+    site_admin: false,
+    contributions: 2,
+  },
+  {
+    login: 'abhimittal342',
+    id: 41774513,
+    node_id: 'MDQ6VXNlcjQxNzc0NTEz',
+    avatar_url: 'https://avatars.githubusercontent.com/u/41774513?v=4',
+    gravatar_id: '',
+    url: 'https://api.github.com/users/abhimittal342',
+    html_url: 'https://github.com/abhimittal342',
+    followers_url: 'https://api.github.com/users/abhimittal342/followers',
+    following_url:
+      'https://api.github.com/users/abhimittal342/following{/other_user}',
+    gists_url: 'https://api.github.com/users/abhimittal342/gists{/gist_id}',
+    starred_url:
+      'https://api.github.com/users/abhimittal342/starred{/owner}{/repo}',
+    subscriptions_url:
+      'https://api.github.com/users/abhimittal342/subscriptions',
+    organizations_url: 'https://api.github.com/users/abhimittal342/orgs',
+    repos_url: 'https://api.github.com/users/abhimittal342/repos',
+    events_url: 'https://api.github.com/users/abhimittal342/events{/privacy}',
+    received_events_url:
+      'https://api.github.com/users/abhimittal342/received_events',
+    type: 'User',
+    site_admin: false,
+    contributions: 1,
+  },
+  {
+    login: 'lakshyaTaragi',
+    id: 72077704,
+    node_id: 'MDQ6VXNlcjcyMDc3NzA0',
+    avatar_url: 'https://avatars.githubusercontent.com/u/72077704?v=4',
+    gravatar_id: '',
+    url: 'https://api.github.com/users/lakshyaTaragi',
+    html_url: 'https://github.com/lakshyaTaragi',
+    followers_url: 'https://api.github.com/users/lakshyaTaragi/followers',
+    following_url:
+      'https://api.github.com/users/lakshyaTaragi/following{/other_user}',
+    gists_url: 'https://api.github.com/users/lakshyaTaragi/gists{/gist_id}',
+    starred_url:
+      'https://api.github.com/users/lakshyaTaragi/starred{/owner}{/repo}',
+    subscriptions_url:
+      'https://api.github.com/users/lakshyaTaragi/subscriptions',
+    organizations_url: 'https://api.github.com/users/lakshyaTaragi/orgs',
+    repos_url: 'https://api.github.com/users/lakshyaTaragi/repos',
+    events_url: 'https://api.github.com/users/lakshyaTaragi/events{/privacy}',
+    received_events_url:
+      'https://api.github.com/users/lakshyaTaragi/received_events',
+    type: 'User',
+    site_admin: false,
+    contributions: 1,
+  },
+  {
+    login: 'sandeep889',
+    id: 49287980,
+    node_id: 'MDQ6VXNlcjQ5Mjg3OTgw',
+    avatar_url: 'https://avatars.githubusercontent.com/u/49287980?v=4',
+    gravatar_id: '',
+    url: 'https://api.github.com/users/sandeep889',
+    html_url: 'https://github.com/sandeep889',
+    followers_url: 'https://api.github.com/users/sandeep889/followers',
+    following_url:
+      'https://api.github.com/users/sandeep889/following{/other_user}',
+    gists_url: 'https://api.github.com/users/sandeep889/gists{/gist_id}',
+    starred_url:
+      'https://api.github.com/users/sandeep889/starred{/owner}{/repo}',
+    subscriptions_url: 'https://api.github.com/users/sandeep889/subscriptions',
+    organizations_url: 'https://api.github.com/users/sandeep889/orgs',
+    repos_url: 'https://api.github.com/users/sandeep889/repos',
+    events_url: 'https://api.github.com/users/sandeep889/events{/privacy}',
+    received_events_url:
+      'https://api.github.com/users/sandeep889/received_events',
+    type: 'User',
+    site_admin: false,
+    contributions: 1,
+  },
+  {
+    login: 'eLeontev',
+    id: 15786916,
+    node_id: 'MDQ6VXNlcjE1Nzg2OTE2',
+    avatar_url: 'https://avatars.githubusercontent.com/u/15786916?v=4',
+    gravatar_id: '',
+    url: 'https://api.github.com/users/eLeontev',
+    html_url: 'https://github.com/eLeontev',
+    followers_url: 'https://api.github.com/users/eLeontev/followers',
+    following_url:
+      'https://api.github.com/users/eLeontev/following{/other_user}',
+    gists_url: 'https://api.github.com/users/eLeontev/gists{/gist_id}',
+    starred_url: 'https://api.github.com/users/eLeontev/starred{/owner}{/repo}',
+    subscriptions_url: 'https://api.github.com/users/eLeontev/subscriptions',
+    organizations_url: 'https://api.github.com/users/eLeontev/orgs',
+    repos_url: 'https://api.github.com/users/eLeontev/repos',
+    events_url: 'https://api.github.com/users/eLeontev/events{/privacy}',
+    received_events_url:
+      'https://api.github.com/users/eLeontev/received_events',
+    type: 'User',
+    site_admin: false,
+    contributions: 1,
+  },
+  {
+    login: 'PratikSawalkar',
+    id: 32099403,
+    node_id: 'MDQ6VXNlcjMyMDk5NDAz',
+    avatar_url: 'https://avatars.githubusercontent.com/u/32099403?v=4',
+    gravatar_id: '',
+    url: 'https://api.github.com/users/PratikSawalkar',
+    html_url: 'https://github.com/PratikSawalkar',
+    followers_url: 'https://api.github.com/users/PratikSawalkar/followers',
+    following_url:
+      'https://api.github.com/users/PratikSawalkar/following{/other_user}',
+    gists_url: 'https://api.github.com/users/PratikSawalkar/gists{/gist_id}',
+    starred_url:
+      'https://api.github.com/users/PratikSawalkar/starred{/owner}{/repo}',
+    subscriptions_url:
+      'https://api.github.com/users/PratikSawalkar/subscriptions',
+    organizations_url: 'https://api.github.com/users/PratikSawalkar/orgs',
+    repos_url: 'https://api.github.com/users/PratikSawalkar/repos',
+    events_url: 'https://api.github.com/users/PratikSawalkar/events{/privacy}',
+    received_events_url:
+      'https://api.github.com/users/PratikSawalkar/received_events',
+    type: 'User',
+    site_admin: false,
+    contributions: 1,
+  },
+];
+
 export const dummy_user = {
   login: 'genialkartik',
   id: 32240906,

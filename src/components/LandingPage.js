@@ -1,62 +1,107 @@
 import React, { useState } from 'react';
-import axios from 'axios';
-import { Container, Row, Col, Form, Image, Card } from 'react-bootstrap';
-import { CircleProgress } from 'react-gradient-progress';
+import {
+  Container,
+  Row,
+  Col,
+  Form,
+  Image,
+  Card,
+  ButtonGroup,
+} from 'react-bootstrap';
 import '../components/assets/css/home.css';
 import announcement from './assets/images/announcement.png';
 import HackImg from './assets/images/logohck.png';
 import { getPRs } from '../api';
-import Githublogo from '../components/assets/images/githublogo.png';
-import Blog from '../components/assets/images/blog.png';
-import { Button } from '@mui/material';
+import {
+  Avatar,
+  AvatarGroup,
+  Box,
+  Button,
+  CircularProgress,
+  Typography,
+} from '@mui/material';
+import { contributors } from '../api/dummu';
+
+function CircularProgressWithLabel(props) {
+  return (
+    <Box sx={{ position: 'relative', display: 'inline-flex' }}>
+      <CircularProgress variant="determinate" {...props} size={100} />
+      <Box
+        sx={{
+          top: 0,
+          left: 0,
+          bottom: 0,
+          right: 0,
+          position: 'absolute',
+          display: 'flex',
+          alignItems: 'center',
+          justifyContent: 'center',
+        }}
+      >
+        <Typography variant="h5" component="div">
+          {`${props.value}%`}
+        </Typography>
+      </Box>
+    </Box>
+  );
+}
 
 function LandingPage() {
   const [username, setUsername] = useState({ uname: '' });
-  const [data, Setdata] = useState([]);
-  const [userImg, setUserImg] = useState(
-    'https://hacktoberfest.digitalocean.com/_nuxt/img/sign-up-accent-right.2faed05.svg'
-  );
-  const [bool, Setbool] = useState(false);
-  const [count, Setcount] = useState(0);
-  const [message, Setmessage] = useState('');
-  const [loaderToggle, SetLoader] = useState(false);
+  const [userImg, setUserAvatar] = useState('');
+  const [bool, setBool] = useState(false);
+  const [count, setCount] = useState(0);
+  const [message, setMessage] = useState('');
+  const [loaderToggle, setLoader] = useState(false);
+  const [pullRequests, setPullRequest] = useState([]);
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-    SetLoader(true);
-    const data = await getPRs('genialkartik');
-    // await axios
-    //   .post('https://hacktoberfestcheck.herokuapp.com', { uname: username })
-    //   .then((res) => {
-    //     if (res.status === 200) {
-    //       var data = data.user_prs;
-    setUserImg(data.user_avatar_url);
-    for (var i = 1; i < data.user_prs.length; i++) {
-      var d = new Date(data.user_prs[i].created_at);
-      d.setDate(d.getDate() + 14);
-
-      if (new Date() > d || new Date() === d)
-        data.user_prs[i].review = 'Completed';
-      else {
-        var diff = Math.abs(d.getTime() - new Date().getTime());
-        var diffDays = Math.ceil(diff / (1000 * 3600 * 24));
-        data[i].review = diffDays + ' days left';
+    try {
+      setLoader(true);
+      if (!username) {
+        throw 'User not found';
       }
-    }
-    Setdata(data);
+      const resp = await getPRs(username);
+      console.log(resp);
+      if (resp.err) {
+        throw resp.err || 'Something gone wrong!';
+      }
+      if (resp.user_prs?.length <= 0) {
+        throw 'No contribution found!';
+      }
+      setPullRequest(resp.user_prs || []);
+      setUserAvatar(resp.user_avatar_url);
+      if (resp?.user_prs?.length) {
+        for (let i = 0; i < resp.user_prs?.length; i++) {
+          let create_date = new Date(resp.user_prs[i].created_at);
+          create_date.setDate(create_date.getDate() + 14);
+          if (new Date() >= create_date) {
+            resp.user_prs[i].review = 'Completed';
+          } else {
+            let timeDiff = Math.abs(
+              create_date.getTime() - new Date().getTime()
+            );
+            let daysDiff = Math.ceil(timeDiff / (1000 * 3600 * 24));
+            resp.user_prs[i].review = daysDiff + ' days left';
+          }
+        }
+      }
 
-    if (data.user_prs.length >= 4) {
-      Setcount(4);
-      Setmessage('Congrats!! You have done 4 PR(s)');
-    } else {
-      var Pr_left = 4 - data.user_prs.length;
-      Setcount(4 - Pr_left);
-      Setmessage("You're just " + Pr_left + ' PR(s) away to get a tee/tree');
+      if (resp.user_prs?.length >= 4) {
+        setCount(4);
+        setMessage('Congrats!! You have done 4 PR(s)');
+      } else {
+        var Pr_left = 4 - resp.user_prs?.length;
+        setCount(4 - Pr_left);
+        setMessage("You're just " + Pr_left + ' PR(s) away to get a tee/tree');
+      }
+      setBool(true);
+      setLoader(false);
+    } catch (error) {
+      setLoader(false);
+      setMessage(error);
     }
-    Setbool(true);
-    SetLoader(false);
-    // }
-    // });
   };
 
   return (
@@ -72,7 +117,7 @@ function LandingPage() {
               rel="noopener noreferrer"
             >
               {' '}
-              <strong style={{ color: 'white' }}>Register</strong>
+              <strong style={{ color: 'rgb(218, 64, 8)' }}>Register</strong>
             </a>{' '}
             to be eligible for the hacktoberfest!
           </Col>
@@ -83,15 +128,17 @@ function LandingPage() {
         <div className={'center hacktoberfest-imgbox'}>
           <Image
             src={require('../components/assets/images/hack.svg')}
-            height="260px"
+            height="200px"
           />
         </div>
         <div
           className={'center text-center'}
-          style={{ color: 'grey', fontFamily: 'sans' }}
+          style={{ fontFamily: 'sans', color: '#dbe8d9' }}
         >
           <Image src={HackImg} />
-          <h1 style={{ marginLeft: '1rem' }}>Check Your Progress</h1>
+          <h1 style={{ marginLeft: '1rem', marginTop: 10 }}>
+            Check Your Progress
+          </h1>
         </div>
 
         <Form
@@ -102,7 +149,15 @@ function LandingPage() {
         >
           <div className={'col-12 col-sm-10 col-lg-8 d-flex'}>
             <div className={'avatarBox'}>
-              <Image roundedCircle src={userImg} width="100px" height="100px" />
+              <Image
+                roundedCircle
+                src={
+                  userImg ||
+                  'https://hacktoberfest.digitalocean.com/_nuxt/img/sign-up-accent-right.2faed05.svg'
+                }
+                width="100px"
+                height="100px"
+              />
             </div>
             <div className="formBox row align-items-center justify-content-around">
               <Form.Control
@@ -116,7 +171,8 @@ function LandingPage() {
               />
               <Button
                 className={'col-6 col-sm-3 col-md-2'}
-                style={{ backgroundColor: '#f74700' }}
+                style={{ backgroundColor: '#f74700', borderRadius: 50 }}
+                size="large"
                 variant="contained"
                 type="submit"
               >
@@ -132,28 +188,26 @@ function LandingPage() {
           </div>
         ) : (
           <div>
-            <div className={'profile'} style={bool ? { padding: '10px' } : {}}>
+            <div className={'profile'}>
               <div>
-                {bool ? (
-                  <CircleProgress percentage={(count / 4) * 100} width={80} />
-                ) : (
-                  ''
+                {bool && (
+                  <CircularProgressWithLabel value={(count / 4) * 100} />
                 )}
-                {message !== '' ? <p>{message}</p> : ''}
+                <h4>{message || ''} </h4>
               </div>
             </div>
 
             <div className={'container'}>
               {bool && (
                 <div className={'row justify-content-center'}>
-                  {data.user_prs.map((d) => (
-                    <div className={'col-10 pullbox'} key={d.title}>
+                  {pullRequests?.map((pr) => (
+                    <div className={'col-10 pullbox'} key={pr.title}>
                       <div className={'row'}>
                         <Card
                           className={'col-12 col-sm-6 col-lg-5 detail-card'}
                           style={
-                            d._has_hacktoberfest_label ||
-                            d._has_hacktoberfest_topic
+                            pr._has_hacktoberfest_label ||
+                            pr._has_hacktoberfest_topic
                               ? {
                                   borderColor: '#2ecc71',
                                   backgroundColor: '#2B3531',
@@ -166,8 +220,8 @@ function LandingPage() {
                         >
                           <p>
                             Label/Topic :{' '}
-                            {d._has_hacktoberfest_label ||
-                            d._has_hacktoberfest_topic ? (
+                            {pr._has_hacktoberfest_label ||
+                            pr._has_hacktoberfest_topic ? (
                               <img
                                 src={require('../components/assets/images/correct.png')}
                                 height="30px"
@@ -185,7 +239,7 @@ function LandingPage() {
                           </p>
                           <p>
                             Pull Request Status : &nbsp;{' '}
-                            {d.state?.toUpperCase()}
+                            {pr.state?.toUpperCase()}
                           </p>
                           <p>
                             Public Repository : &nbsp;{' '}
@@ -196,37 +250,37 @@ function LandingPage() {
                               alt="topic"
                             />{' '}
                           </p>
-                          <p>Review Period : {d.review}</p>
+                          <p>Review Period : {pr.review}</p>
                         </Card>
                         <Card className={'col-12 col-sm-6 col-lg-7 card-info'}>
                           <p>
                             You submitted
                             <b>
                               <a
-                                href={d.pr_url}
+                                href={pr.pr_url}
                                 target="_blank"
                                 rel="noopener noreferrer"
                               >
                                 {' '}
-                                {d.title?.toUpperCase()}
+                                {pr.title?.toUpperCase()}
                               </a>
                             </b>{' '}
                             to
                             <b>
                               <a
-                                href={d.repo_url}
+                                href={pr.repo_url}
                                 target="_blank"
                                 rel="noopener noreferrer"
                               >
                                 {' '}
-                                {d.repo_name?.toUpperCase()}{' '}
+                                {pr.repo_name?.toUpperCase()}{' '}
                               </a>
                             </b>
                           </p>
                           <p style={{ fontSize: '3mm' }}>
                             <br />
                             {new Date(
-                              Date.parse(d.created_at)
+                              Date.parse(pr.created_at)
                             ).toLocaleString()}
                           </p>
                         </Card>
@@ -239,30 +293,72 @@ function LandingPage() {
           </div>
         )}
 
-        <div class="row justify-content-center">
-          <a
-            href="https://github.com/genialkartik/hacktoberfest-checker/tree/main"
-            className={' col-6 col-sm-3 col-md-2'}
-          >
-            <Image src={Githublogo} width="120px" height="100px" />
-          </a>
-          <a href="" className={' col-6 col-sm-3 col-md-2'}>
-            <Image src={Blog} width="120px" height="120px" />
-          </a>
-        </div>
         <footer
-          className={'center'}
-          style={{ marginTop: bool ? '50px' : '20px', textAlign: 'center' }}
+          style={{
+            marginTop: bool ? '50px' : '20px',
+            textAlign: 'center',
+            color: '#dbe8d9',
+          }}
         >
-          <p>
+          <p class="row justify-content-center">
+            <a
+              href="https://github.com/genialkartik/hacktoberfest-checker/graphs/contributors"
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              {' '}
+              Contributors
+            </a>
+          </p>
+          <p class="row justify-content-center">
+            <AvatarGroup max={contributors.length}>
+              {contributors?.map((contrib, idx) => (
+                <Avatar
+                  alt={contrib.login}
+                  key={idx}
+                  src={contrib.avatar_url}
+                />
+              ))}
+            </AvatarGroup>
+          </p>
+          <p class="row justify-content-center">
             Attention : This site is just a fan made and it is not affiliated by{' '}
             <a
               href="https://hacktoberfest.digitalocean.com/"
               target="_blank"
               rel="noopener noreferrer"
             >
+              {' '}
               Hacktoberfest
             </a>
+          </p>
+          <p class="row justify-content-center">
+            <ButtonGroup variant="text" aria-label="text button group">
+              <Button
+                sx={{ color: '#ff4400' }}
+                onClick={() => (window.location.href = '/blog')}
+              >
+                Blog
+              </Button>
+              <Button
+                sx={{ color: '#ff4400' }}
+                onClick={() =>
+                  (window.location.href =
+                    'http://github.com/genialkartik/hacktoberfest-checker')
+                }
+              >
+                GitHub
+              </Button>
+              <Button
+                sx={{ color: '#ff4400' }}
+                onClick={() =>
+                  (window.location.href =
+                    'https://hacktoberfest.digitalocean.com/')
+                }
+              >
+                Participate
+              </Button>
+            </ButtonGroup>
           </p>
         </footer>
       </div>
