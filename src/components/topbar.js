@@ -1,52 +1,10 @@
 import React from 'react';
 
-import {
-  Container,
-  Row,
-  Col,
-  Form,
-  Image,
-  Card,
-  ButtonGroup,
-} from 'react-bootstrap';
-import './assets/Css/home.css';
+import { Container, Row, Col } from 'react-bootstrap';
+import './assets/css/home.css';
 import announcement from './assets/images/announcement.png';
-import HackImg from './assets/images/logohck.png';
-import {
-  Avatar,
-  AvatarGroup,
-  Box,
-  Button,
-  CircularProgress,
-  Typography,
-} from '@mui/material';
-
-function CircularProgressWithLabel(props) {
-  return (
-    <Box sx={{ position: 'relative', display: 'inline-flex' }}>
-      <CircularProgress variant="determinate" {...props} size={100} />
-      <Box
-        sx={{
-          top: 0,
-          left: 0,
-          bottom: 0,
-          right: 0,
-          position: 'absolute',
-          display: 'flex',
-          alignItems: 'center',
-          justifyContent: 'center',
-        }}
-      >
-        <Typography variant="h5" component="div">
-          {`${props.value}%`}
-        </Typography>
-      </Box>
-    </Box>
-  );
-}
 
 function TopBar(props) {
-
   return (
     <>
       <Container fluid className={'nav center'}>
@@ -66,9 +24,7 @@ function TopBar(props) {
           </Col>
         </Row>
       </Container>
-
-          </>
-    
+    </>
   );
 }
 export default TopBar;

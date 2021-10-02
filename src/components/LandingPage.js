@@ -1,26 +1,11 @@
-import React, { useEffect, useState } from 'react';
-import {
-  Container,
-  Row,
-  Col,
-  Form,
-  Image,
-  Card,
-  ButtonGroup,
-} from 'react-bootstrap';
-import './assets/Css/home.css';
-import announcement from './assets/images/announcement.png';
+import React, { useState } from 'react';
+import { Form, Image, Card } from 'react-bootstrap';
+import './assets/css/home.css';
 import HackImg from './assets/images/logohck.png';
 import GithubApi from '../api/index';
-import {
-  Avatar,
-  AvatarGroup,
-  Box,
-  Button,
-  CircularProgress,
-  Typography,
-} from '@mui/material';
+import { Box, Button, CircularProgress, Typography } from '@mui/material';
 import TopBar from './topbar';
+import Footer from './footer';
 
 function CircularProgressWithLabel(props) {
   return (
@@ -54,14 +39,6 @@ function LandingPage(props) {
   const [message, setMessage] = useState('');
   const [loaderToggle, setLoader] = useState(false);
   const [pullRequests, setPullRequest] = useState([]);
-  const [contributors, setContributors] = useState([]);
-
-  useEffect(() => {
-    (async () => {
-      const contri = await GithubApi.getContributors();
-      setContributors(contri || []);
-    })();
-  }, [props]);
 
   const handleSubmit = async (e) => {
     e.preventDefault();
@@ -113,7 +90,7 @@ function LandingPage(props) {
 
   return (
     <div className={'appbody'}>
-    <TopBar />
+      <TopBar />
 
       <div className={'main'}>
         <div className={'center hacktoberfest-imgbox'}>
@@ -283,87 +260,7 @@ function LandingPage(props) {
             </div>
           </div>
         )}
-
-        <footer
-          style={{
-            marginTop: bool ? '50px' : '20px',
-            textAlign: 'center',
-            color: '#dbe8d9',
-          }}
-        >
-          <div
-            style={{ marginBlock: 20 }}
-            className="row justify-content-center"
-          >
-            <a
-              href="https://github.com/genialkartik/hacktoberfest-checker/graphs/contributors"
-              target="_blank"
-              rel="noopener noreferrer"
-            >
-              {' '}
-              Contributors
-            </a>
-          </div>
-          <div
-            style={{ marginBlock: 20 }}
-            className="row justify-content-center"
-          >
-            <AvatarGroup max={contributors.length || 2}>
-              {contributors?.map((contrib, idx) => (
-                <Avatar
-                  alt={contrib.login}
-                  key={idx}
-                  src={contrib.avatar_url}
-                />
-              ))}
-            </AvatarGroup>
-          </div>
-          <div
-            style={{ marginBlock: 20 }}
-            className="row justify-content-center"
-          >
-            Attention : This site is just a fan made and it is not affiliated by{' '}
-            <a
-              href="https://hacktoberfest.digitalocean.com/"
-              target="_blank"
-              rel="noopener noreferrer"
-            >
-              {' '}
-              Hacktoberfest
-            </a>
-          </div>
-          <div
-            style={{ marginBlock: 20 }}
-            className="row justify-content-center"
-          >
-            <ButtonGroup variant="text" aria-label="text button group">
-              <Button
-                sx={{ color: '#ff4400' }}
-                onClick={() => (window.location.href = '/blog')}
-              >
-                Blog
-              </Button>
-              <Button
-                sx={{ color: '#ff4400' }}
-                onClick={() =>
-                  (window.location.href =
-                    'http://github.com/genialkartik/hacktoberfest-checker')
-                }
-              >
-                GitHub
-              </Button>
-              <Button
-                sx={{ color: '#ff4400' }}
-                onClick={() =>
-                  (window.location.href =
-                    'https://hacktoberfest.digitalocean.com/')
-                }
-              >
-                Participate
-              </Button>
-            </ButtonGroup>
-          </div>
-        </footer>
+        <Footer />
       </div>
     </div>
   );
