@@ -49,7 +49,7 @@ class GithubApi {
           pr_url: prs[i].html_url,
           repo_name:
             prs[i].repository_url.split('/')[
-              prs[i].repository_url.split('/').length - 1
+            prs[i].repository_url.split('/').length - 1
             ],
           repo_url: prs[i].repository_url,
           _has_hacktoberfest_topic,
