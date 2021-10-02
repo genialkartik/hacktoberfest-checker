@@ -8,7 +8,7 @@ import {
   Card,
   ButtonGroup,
 } from 'react-bootstrap';
-import '../components/assets/css/home.css';
+import './assets/Css/home.css';
 import announcement from './assets/images/announcement.png';
 import HackImg from './assets/images/logohck.png';
 import GithubApi from '../api/index';
@@ -20,6 +20,7 @@ import {
   CircularProgress,
   Typography,
 } from '@mui/material';
+import TopBar from './topbar';
 
 function CircularProgressWithLabel(props) {
   return (
@@ -112,23 +113,7 @@ function LandingPage(props) {
 
   return (
     <div className={'appbody'}>
-      <Container fluid className={'nav center'}>
-        <Row className={'container text-center'}>
-          <Col>
-            <img src={announcement} height="40px" alt="announcement" />{' '}
-            &nbsp;Don't forget to
-            <a
-              href="https://hacktoberfest.digitalocean.com/"
-              target="_blank"
-              rel="noopener noreferrer"
-            >
-              {' '}
-              <strong style={{ color: 'rgb(218, 64, 8)' }}>Register</strong>
-            </a>{' '}
-            to be eligible for the hacktoberfest!
-          </Col>
-        </Row>
-      </Container>
+    <TopBar />
 
       <div className={'main'}>
         <div className={'center hacktoberfest-imgbox'}>

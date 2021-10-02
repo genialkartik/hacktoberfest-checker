@@ -32,7 +32,14 @@ export default function Routers() {
       element: <LandingPage />,
       // children: [{ path: '', element: <LandingPage /> }],
     },
+    {
+      path: '/blog',
+      element: <BlogPage />,
+      // children: [{ path: '', element: <LandingPage /> }],
+    },
+
   ]);
 }
 
 const LandingPage = Loadable(lazy(() => import('../components/LandingPage')));
+const BlogPage = Loadable(lazy(() => import('../components/Blog/index') ))
