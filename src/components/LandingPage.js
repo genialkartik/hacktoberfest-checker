@@ -213,21 +213,21 @@ function LandingPage(props) {
                           className={'col-12 col-sm-6 col-lg-5 detail-card'}
                           style={
                             pr._has_hacktoberfest_label ||
-                            pr._has_hacktoberfest_topic
+                              pr._has_hacktoberfest_topic
                               ? {
-                                  borderColor: '#2ecc71',
-                                  backgroundColor: '#2B3531',
-                                }
+                                borderColor: '#2ecc71',
+                                backgroundColor: '#2B3531',
+                              }
                               : {
-                                  borderColor: '#e74c3c',
-                                  backgroundColor: 'rgba(231,76,60,0.1)',
-                                }
+                                borderColor: '#e74c3c',
+                                backgroundColor: 'rgba(231,76,60,0.1)',
+                              }
                           }
                         >
                           <p>
                             Label/Topic :{' '}
                             {pr._has_hacktoberfest_label ||
-                            pr._has_hacktoberfest_topic ? (
+                              pr._has_hacktoberfest_topic ? (
                               <img
                                 src={require('../components/assets/images/correct.png')}
                                 height="30px"
@@ -361,8 +361,8 @@ function LandingPage(props) {
               <Button
                 sx={{ color: '#ff4400' }}
                 onClick={() =>
-                  (window.location.href =
-                    'http://github.com/genialkartik/hacktoberfest-checker')
+                (window.location.href =
+                  'http://github.com/genialkartik/hacktoberfest-checker')
                 }
               >
                 GitHub
@@ -370,8 +370,8 @@ function LandingPage(props) {
               <Button
                 sx={{ color: '#ff4400' }}
                 onClick={() =>
-                  (window.location.href =
-                    'https://hacktoberfest.digitalocean.com/')
+                (window.location.href =
+                  'https://hacktoberfest.digitalocean.com/')
                 }
               >
                 Participate
