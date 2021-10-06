@@ -59,7 +59,16 @@ export default function PRCreate() {
          <Image src={Step9} /> 
      
         </Definition>  
-
+     <Heading>
+       FAQ's
+     </Heading>
+     <Definition>
+       1). How to create Issue? <br />
+       2). How to become Open Source Contributor? <br />
+       3). How to upload Projects On Github? <br />
+       4). How to use VS code for Github? <br />
+       5). How to use Gitbash for Github? <br />
+     </Definition>
     
     </>
   );
