@@ -17,12 +17,11 @@ export default function Footer(props) {
   return (
     <footer
       style={{
-        marginTop: '50px',
         textAlign: 'center',
         color: '#dbe8d9',
       }}
     >
-      <div style={{ marginBlock: 20 }} className="row justify-content-center">
+      <div className="row justify-content-center">
         <a
           href="https://github.com/genialkartik/hacktoberfest-checker/graphs/contributors"
           target="_blank"
@@ -40,13 +39,13 @@ export default function Footer(props) {
         </AvatarGroup>
       </div>
       <div style={{ marginBlock: 20 }} className="row justify-content-center">
-        Attention : This site is just a fan made and it is not affiliated by{' '}
+        Attention : This site is just a fan made and it is not affiliated by
         <a
+          style={{marginLeft: 4, marginTop: 1}}
           href="https://hacktoberfest.digitalocean.com/"
           target="_blank"
           rel="noopener noreferrer"
         >
-          {' '}
           Hacktoberfest
         </a>
       </div>
@@ -54,24 +53,22 @@ export default function Footer(props) {
         <ButtonGroup variant="text" aria-label="text button group">
           <Button
             sx={{ color: '#ff4400' }}
-            onClick={() => (window.location.href = '/blog')}
+            href='/blog'
+            target="_blank"
           >
             Blog
           </Button>
           <Button
             sx={{ color: '#ff4400' }}
-            onClick={() =>
-              (window.location.href =
-                'http://github.com/genialkartik/hacktoberfest-checker')
-            }
+            href='http://github.com/genialkartik/hacktoberfest-checker'
+            target="_blank"
           >
             GitHub
           </Button>
           <Button
             sx={{ color: '#ff4400' }}
-            onClick={() =>
-              (window.location.href = 'https://hacktoberfest.digitalocean.com/')
-            }
+            href='https://hacktoberfest.digitalocean.com/'
+            target="_blank"
           >
             Participate
           </Button>
