@@ -5,7 +5,7 @@
 }
 .nav {
   background-color: #dbe8d9;
-  height: auto !important;
+  height: auto !important; /* kept nav height auto to auto adjust for small devices */
   padding: 0 !important;
   font-size: 85%;
   color: #ff4400;
@@ -63,7 +63,7 @@ input:-internal-autofill-selected {
 .form1 {
   padding: 5px 0 20px;
   width: 100%;
-  margin: 0px; /* default margin of -15px affected mobiLe UI */
+  margin: 0px; /* default margin of -15px affected mobile UI */
 }
 .avatarBox {
   width: 100px;
