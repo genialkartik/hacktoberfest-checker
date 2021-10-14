@@ -54,6 +54,7 @@ export default function Footer(props) {
           <Button
             sx={{ color: '#ff4400' }}
             href='/blog'
+            target="_blank"
           >
             Blog
           </Button>
