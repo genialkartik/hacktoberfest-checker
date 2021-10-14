@@ -6,7 +6,7 @@ export default function Blog() {
   return (
     <>
       <TopBar />
-      <div style={{ backgroundColor: '#2B3531', paddingInline: '20%' }}>
+      <div className="blog-wrapper">
         <BlogNav />
       </div>
     </>
