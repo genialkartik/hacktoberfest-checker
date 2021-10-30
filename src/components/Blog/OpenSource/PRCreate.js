@@ -2,7 +2,7 @@ import * as React from 'react';
 import styled from 'styled-components';
 import Step1 from '../../assets/Blogimages/Pr/step1.png'
 import Step9 from '../../assets/Blogimages/Pr/step9.png'
-const Heading = styled.h1`
+const Heading = styled.h2`
   text-align: left;
   color: rgb(214, 62, 62);
   margin-top: 1rem;
@@ -26,7 +26,7 @@ export default function PRCreate() {
   return (
     <>
         <Heading>
-          How to create PR for <strong>Hacktoberfest.</strong>?
+          How to create PR for <strong>Hacktoberfest</strong>?
         </Heading>
         <Definition>
          <strong>Step to Step Guide to Create PR(Pull Request).</strong> <br />

@@ -8,7 +8,7 @@ import Step5 from '../assets/Blogimages/Steps/step5.png';
 import Step6 from '../assets/Blogimages/Steps/step6.png';
 import Step7 from '../assets/Blogimages/Steps/step7.png';
 
-const Heading = styled.h1`
+const Heading = styled.h2`
   text-align: left;
   color: rgb(214, 62, 62);
   margin-top: 1rem;

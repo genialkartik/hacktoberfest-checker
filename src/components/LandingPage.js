@@ -108,9 +108,9 @@ function LandingPage(props) {
           style={{ fontFamily: 'sans', color: '#dbe8d9' }}
         >
           <Image src={HackImg} />
-          <h1 style={{ marginLeft: '1rem', marginTop: 10 }}>
+          <div className="check-your-progress-text">
             Check Your Progress
-          </h1>
+          </div>
         </div>
 
         <Form
