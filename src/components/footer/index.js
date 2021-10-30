@@ -32,13 +32,13 @@ export default function Footer(props) {
         </a>
       </div>
       <div style={{ marginBlock: 20 }} className="row justify-content-center">
-        <AvatarGroup max={contributors.length || 2}>
+        <AvatarGroup style={{flexWrap: "wrap-reverse", justifyContent: "center", width: "85%", marginLeft: 8}} max={contributors.length || 2}>
           {contributors?.map((contrib, idx) => (
             <Avatar alt={contrib.login} key={idx} src={contrib.avatar_url} />
           ))}
         </AvatarGroup>
       </div>
-      <div style={{ marginBlock: 20 }} className="row justify-content-center">
+      <div style={{ marginBlock: 20, marginLeft: 16, marginRight: 16 }} className="row justify-content-center">
         Attention : This site is just a fan made and it is not affiliated by
         <a
           style={{marginLeft: 4, marginTop: 1}}

@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import { Form, Image, Card } from 'react-bootstrap';
 import './assets/css/home.css';
 import HackImg from './assets/images/logohck.png';
+import HacktoberfestLogo from '../components/assets/images/hack.svg';
 import GithubApi from '../api/index';
 import { Box, Button, CircularProgress, Typography } from '@mui/material';
 import TopBar from './topbar';
@@ -100,19 +101,16 @@ function LandingPage(props) {
 
       <div className={'main'}>
         <div className={'center hacktoberfest-imgbox'}>
-          <Image
-            src={require('../components/assets/images/hack.svg')}
-            height="200px"
-          />
+          <Image src={HacktoberfestLogo} height="200px" />
         </div>
         <div
           className={'center text-center'}
           style={{ fontFamily: 'sans', color: '#dbe8d9' }}
         >
           <Image src={HackImg} />
-          <h1 style={{ marginLeft: '1rem', marginTop: 10 }}>
+          <div className="check-your-progress-text">
             Check Your Progress
-          </h1>
+          </div>
         </div>
 
         <Form
