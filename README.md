@@ -4,7 +4,7 @@
 
 It'll help to know how close are you to get a tee/tshirt or why your PRs are invalid according to the latest policy of [Hacktoberfest](https://hacktoberfest.digitalocean.com/resources).
 
-Check Your Hacktoberfest Status: **[hacktoberfest.gitfork.tech](https://hacktoberfest.gitfork.tech)**
+Check Your Hacktoberfest Status: **[gitfork.netlify.app/](https://gitfork.netlify.app/)**
 
 ![Hacktoberfest Checker](https://user-images.githubusercontent.com/32240906/135563258-cf53f19c-6d88-4196-a8f8-105f97c487c8.png)
 
@@ -19,7 +19,7 @@ which means only the PRs specified as contribution towards Hacktoberfest will on
 
 ### How to know whether a Pull Request is valid or not?
 
-This question is the answer of creation of **[Hacktoberfest-Checker](https://hacktoberfest.gitfork.tech)**.
+This question is the answer of creation of **[Hacktoberfest-Checker](https://gitfork.netlify.app/)**.
 A PR will be counted as valid and the user will get the tee/tshirt only when:
 - Submitted during the `month of October`
 - Submitted in a `public repo`
