@@ -125,7 +125,7 @@ function LandingPage(props) {
                 roundedCircle
                 src={
                   userImg ||
-                  'src/components/LandingPage.js'
+                  'https://thumbnail.imgbin.com/2/4/7/imgbin-social-media-computer-icons-github-logo-symbol-social-media-ny7GSWdD1cDeyKrtvtZuYZPNr_t.jpg'
                 }
                 width="100px"
                 height="100px"
