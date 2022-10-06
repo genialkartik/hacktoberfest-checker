@@ -125,7 +125,7 @@ function LandingPage(props) {
                 roundedCircle
                 src={
                   userImg ||
-                  'https://avatars.githubusercontent.com/u/55929607?v=4'
+                  'src/components/LandingPage.js'
                 }
                 width="100px"
                 height="100px"
