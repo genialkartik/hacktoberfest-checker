@@ -125,7 +125,7 @@ function LandingPage(props) {
                 roundedCircle
                 src={
                   userImg ||
-                  'https://hacktoberfest.digitalocean.com/_nuxt/img/sign-up-accent-right.2faed05.svg'
+                  'https://avatars.githubusercontent.com/u/55929607?v=4'
                 }
                 width="100px"
                 height="100px"
