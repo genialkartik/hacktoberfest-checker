@@ -1,3 +1,5 @@
+import defaultAvatar from '../components/assets/images/logohck.png';
+
 class GithubApi {
   async getPRs(username) {
     try {
@@ -10,7 +12,7 @@ class GithubApi {
         throw 'Invalid Username';
       }
       const prs_response = await fetch(
-        `${process.env.REACT_APP_GITHUB_API}?q=author:${username}+created:>2021-09-30T09:30:00+type:pr`
+        `${process.env.REACT_APP_GITHUB_API}?q=author:${username}+created:>2022-09-30T09:30:00+type:pr`
       );
 
       const user_prs_resp = await prs_response.json();
@@ -61,8 +63,7 @@ class GithubApi {
       return {
         user_prs: ar_PR,
         user_avatar_url:
-          userData.avatar_url ||
-          'https://hacktoberfest.digitalocean.com/_nuxt/img/sign-up-accent-right.2faed05.svg',
+          userData.avatar_url || defaultAvatar,
       };
     } catch (error) {
       return { err: error || 'Something went wrong' };
