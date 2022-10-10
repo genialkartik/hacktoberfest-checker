@@ -69,7 +69,7 @@ function LandingPage(props) {
       if (resp?.user_prs?.length) {
         for (let i = 0; i < resp.user_prs?.length; i++) {
           let create_date = new Date(resp.user_prs[i].created_at);
-          create_date.setDate(create_date.getDate() + 14);
+          create_date.setDate(create_date.getDate() + 7);
           if (new Date() >= create_date) {
             resp.user_prs[i].review = 'Completed';
           } else {
