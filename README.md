@@ -1,4 +1,4 @@
-# Hacktoberfest Checker 2021
+# Hacktoberfest Checker 2022
 
 [![Open Issues](https://img.shields.io/github/issues/genialkartik/hacktoberfest-checker?style=for-the-badge&logo=github)](https://github.com/genialkartik/hacktoberfest-checker/issues) [![Forks](https://img.shields.io/github/forks/genialkartik/hacktoberfest-checker?style=for-the-badge&logo=github)](https://github.com/genialkartik/hacktoberfest-checker/network/members) [![Stars](https://img.shields.io/github/stars/genialkartik/hacktoberfest-checker?style=for-the-badge&logo=reverbnation)](https://github.com/code-monk08/connect-four/stargazers) ![Open Source Love](https://img.shields.io/badge/Open%20Source-%E2%99%A5-red?style=for-the-badge&logo=open-source-initiative)
 
