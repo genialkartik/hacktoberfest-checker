@@ -17,8 +17,7 @@ export default function Footer(props) {
   return (
     <footer
       style={{
-        textAlign: 'center',
-        color: '#dbe8d9',
+        textAlign: 'center'
       }}
     >
       <div className="row justify-content-center">
@@ -39,10 +38,10 @@ export default function Footer(props) {
         </AvatarGroup>
       </div>
       <div style={{ marginBlock: 20, marginLeft: 16, marginRight: 16 }} className="row justify-content-center">
-        Attention : This site is just a fan made and it is not affiliated by
+        Attention: This site is just a fan made project and it is not affiliated with 
         <a
-          style={{marginLeft: 4, marginTop: 1}}
-          href="https://hacktoberfest.digitalocean.com/"
+          style={{marginLeft: 10, marginTop: 1}}
+          href="https://hacktoberfest.com/"
           target="_blank"
           rel="noopener noreferrer"
         >
@@ -52,22 +51,22 @@ export default function Footer(props) {
       <div className="row justify-content-center">
         <ButtonGroup variant="text" aria-label="text button group">
           <Button
-            sx={{ color: '#ff4400' }}
             href='/blog'
+            style={{fontFamily: 'var(--main-font)', color: 'var(--main-color)'}}
           >
             Blog
           </Button>
           <Button
-            sx={{ color: '#ff4400' }}
             href='http://github.com/genialkartik/hacktoberfest-checker'
             target="_blank"
+            style={{fontFamily: 'var(--main-font)', color: 'var(--main-color)'}}
           >
             GitHub
           </Button>
           <Button
-            sx={{ color: '#ff4400' }}
-            href='https://hacktoberfest.digitalocean.com/'
+            href='https://hacktoberfest.com/'
             target="_blank"
+            style={{fontFamily: 'var(--main-font)', color: 'var(--main-color)'}}
           >
             Participate
           </Button>
