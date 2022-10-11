@@ -123,12 +123,12 @@ function LandingPage(props) {
         >
           <div className={'col-12 col-sm-10 col-lg-8 d-flex'}>
             <div className={'avatarBox'}>
-              {userImg ? (<Image
+              <Image
                 roundedCircle
-                src={userImg}
+                src={userImg || HackImg}
                 width="100%"
                 height="100%"
-              />) : <div className="avatarBoxDefault"></div>}
+              />
             </div>
             <div className="formBox row align-items-center justify-content-around">
               <Form.Control
