@@ -1,8 +1,8 @@
-# Hacktoberfest Checker 2021
+# Hacktoberfest Checker 2022
 
 [![Open Issues](https://img.shields.io/github/issues/genialkartik/hacktoberfest-checker?style=for-the-badge&logo=github)](https://github.com/genialkartik/hacktoberfest-checker/issues) [![Forks](https://img.shields.io/github/forks/genialkartik/hacktoberfest-checker?style=for-the-badge&logo=github)](https://github.com/genialkartik/hacktoberfest-checker/network/members) [![Stars](https://img.shields.io/github/stars/genialkartik/hacktoberfest-checker?style=for-the-badge&logo=reverbnation)](https://github.com/code-monk08/connect-four/stargazers) ![Open Source Love](https://img.shields.io/badge/Open%20Source-%E2%99%A5-red?style=for-the-badge&logo=open-source-initiative)
 
-It'll help to know how close are you to get a tee/tshirt or why your PRs are invalid according to the latest policy of [Hacktoberfest](https://hacktoberfest.digitalocean.com/resources).
+It'll help to know how close are you to get a tee/tshirt or why your PRs are invalid according to the latest policy of [Hacktoberfest](https://hacktoberfest.com/participation/).
 
 Check Your Hacktoberfest Status: **[gitfork.netlify.app/](https://gitfork.netlify.app/)**
 
@@ -10,7 +10,7 @@ Check Your Hacktoberfest Status: **[gitfork.netlify.app/](https://gitfork.netlif
 
 ### Why to develop another Hacktoberfest Checker, when there are pre-existing checkers already?
 
-Well, I developed this another, but not alike, hacktoberfest checker because [Hacktoberfest's policy and guidlines of contribution](https://hacktoberfest.digitalocean.com/resources) has recently been changed.
+Well, I developed this another, but not alike, hacktoberfest checker because [Hacktoberfest's policy and guidlines of contribution](https://hacktoberfest.com/participation/) has recently been changed.
 
 ### What's new in Update?
 

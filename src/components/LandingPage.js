@@ -3,15 +3,18 @@ import { Form, Image, Card } from 'react-bootstrap';
 import './assets/css/home.css';
 import HackImg from './assets/images/logohck.png';
 import HacktoberfestLogo from '../components/assets/images/hack.svg';
+import CorrectImage from './assets/images/correct.png';
+import WrongImage from './assets/images/wrong.png';
 import GithubApi from '../api/index';
 import { Box, Button, CircularProgress, Typography } from '@mui/material';
 import TopBar from './topbar';
 import Footer from './footer';
 
 function CircularProgressWithLabel(props) {
+  const colorVar = props.value > 75 ? 'var(--psybeam)' : (props.value > 50 ? 'var(--surf)' : 'var(--spark)');
   return (
     <Box sx={{ position: 'relative', display: 'inline-flex' }}>
-      <CircularProgress variant="determinate" {...props} size={100} />
+      <CircularProgress sx={{color: colorVar}} variant="determinate" {...props} size={100} />
       <Box
         sx={{
           top: 0,
@@ -66,7 +69,7 @@ function LandingPage(props) {
       if (resp?.user_prs?.length) {
         for (let i = 0; i < resp.user_prs?.length; i++) {
           let create_date = new Date(resp.user_prs[i].created_at);
-          create_date.setDate(create_date.getDate() + 14);
+          create_date.setDate(create_date.getDate() + 7);
           if (new Date() >= create_date) {
             resp.user_prs[i].review = 'Completed';
           } else {
@@ -101,13 +104,12 @@ function LandingPage(props) {
 
       <div className={'main'}>
         <div className={'center hacktoberfest-imgbox'}>
-          <Image src={HacktoberfestLogo} height="200px" />
+          <Image src={HacktoberfestLogo} height="400px" />
         </div>
         <div
           className={'center text-center'}
-          style={{ fontFamily: 'sans', color: '#dbe8d9' }}
         >
-          <Image src={HackImg} />
+          <Image src={HackImg} style={{width: '50px', marginRight: '10px'}} />
           <div className="check-your-progress-text">
             Check Your Progress
           </div>
@@ -123,12 +125,9 @@ function LandingPage(props) {
             <div className={'avatarBox'}>
               <Image
                 roundedCircle
-                src={
-                  userImg ||
-                  'https://hacktoberfest.digitalocean.com/_nuxt/img/sign-up-accent-right.2faed05.svg'
-                }
-                width="100px"
-                height="100px"
+                src={userImg || HackImg}
+                width="100%"
+                height="100%"
               />
             </div>
             <div className="formBox row align-items-center justify-content-around">
@@ -142,11 +141,11 @@ function LandingPage(props) {
                 }}
               />
               <Button
-                className={'col-6 col-sm-3 col-md-2'}
-                style={{ backgroundColor: '#f74700', borderRadius: 50 }}
+                className={'col-6 col-sm-3 col-md-2 special'}
                 size="large"
                 variant="contained"
                 type="submit"
+                style={{fontFamily: 'var(--main-font)'}}
               >
                 Check
               </Button>
@@ -181,12 +180,12 @@ function LandingPage(props) {
                             pr._has_hacktoberfest_label ||
                             pr._has_hacktoberfest_topic
                               ? {
-                                  borderColor: '#2ecc71',
-                                  backgroundColor: '#2B3531',
+                                  borderColor: 'var(--surf)',
+                                  backgroundColor: 'var(--main-background)'
                                 }
                               : {
-                                  borderColor: '#e74c3c',
-                                  backgroundColor: 'rgba(231,76,60,0.1)',
+                                  borderColor: 'var(--spark)',
+                                  backgroundColor: 'var(--main-background)',
                                 }
                           }
                         >
@@ -195,14 +194,14 @@ function LandingPage(props) {
                             {pr._has_hacktoberfest_label ||
                             pr._has_hacktoberfest_topic ? (
                               <img
-                                src={require('../components/assets/images/correct.png')}
+                                src={CorrectImage}
                                 height="30px"
                                 width="30px"
                                 alt="topic"
                               />
                             ) : (
                               <img
-                                src={require('../components/assets/images/wrong.png')}
+                                src={WrongImage}
                                 height="23px"
                                 width="23px"
                                 alt="label"
@@ -216,7 +215,7 @@ function LandingPage(props) {
                           <p>
                             Public Repository : &nbsp;{' '}
                             <img
-                              src={require('../components/assets/images/correct.png')}
+                              src={CorrectImage}
                               height="30px"
                               width="30px"
                               alt="topic"
