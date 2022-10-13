@@ -21,7 +21,7 @@ class GithubApi {
         throw 'Unable to fetch Pull Requests';
       }
       if (user_prs_resp?.total_count === 0 || !user_prs_resp.items.length) {
-        throw 'No contribution found! Click on Participate to start right away!';
+        throw 'No contribution found!';
       }
 
       const prs = user_prs_resp.items;
@@ -62,8 +62,7 @@ class GithubApi {
       }
       return {
         user_prs: ar_PR,
-        user_avatar_url:
-          userData.avatar_url || defaultAvatar,
+        user_avatar_url: userData.avatar_url || defaultAvatar,
       };
     } catch (error) {
       return { err: error || 'Something went wrong' };

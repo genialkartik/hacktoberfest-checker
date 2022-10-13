@@ -11,10 +11,20 @@ import TopBar from './topbar';
 import Footer from './footer';
 
 function CircularProgressWithLabel(props) {
-  const colorVar = props.value > 75 ? 'var(--psybeam)' : (props.value > 50 ? 'var(--surf)' : 'var(--spark)');
+  const colorVar =
+    props.value > 75
+      ? 'var(--psybeam)'
+      : props.value > 50
+      ? 'var(--surf)'
+      : 'var(--spark)';
   return (
     <Box sx={{ position: 'relative', display: 'inline-flex' }}>
-      <CircularProgress sx={{color: colorVar}} variant="determinate" {...props} size={100} />
+      <CircularProgress
+        sx={{ color: colorVar }}
+        variant="determinate"
+        {...props}
+        size={100}
+      />
       <Box
         sx={{
           top: 0,
@@ -104,15 +114,11 @@ function LandingPage(props) {
 
       <div className={'main'}>
         <div className={'center hacktoberfest-imgbox'}>
-          <Image src={HacktoberfestLogo} height="400px" />
+          <Image src={HacktoberfestLogo} height="150px" />
         </div>
-        <div
-          className={'center text-center'}
-        >
-          <Image src={HackImg} style={{width: '50px', marginRight: '10px'}} />
-          <div className="check-your-progress-text">
-            Check Your Progress
-          </div>
+        <div className={'center text-center'}>
+          {/* <Image src={HackImg} style={{ width: '50px', marginRight: '10px' }} /> */}
+          <h2 className="check-your-progress-text">Check Your Progress</h2>
         </div>
 
         <Form
@@ -134,7 +140,7 @@ function LandingPage(props) {
               <Form.Control
                 className={'col-12 col-sm-8 col-md-9 form'}
                 type="text"
-                placeholder="GitHub Username"
+                placeholder="Your GitHub Username"
                 name="uname"
                 onChange={(e) => {
                   setUsername(e.target.value);
@@ -145,7 +151,7 @@ function LandingPage(props) {
                 size="large"
                 variant="contained"
                 type="submit"
-                style={{fontFamily: 'var(--main-font)'}}
+                style={{ fontFamily: 'var(--main-font)' }}
               >
                 Check
               </Button>
@@ -181,7 +187,7 @@ function LandingPage(props) {
                             pr._has_hacktoberfest_topic
                               ? {
                                   borderColor: 'var(--surf)',
-                                  backgroundColor: 'var(--main-background)'
+                                  backgroundColor: 'var(--main-background)',
                                 }
                               : {
                                   borderColor: 'var(--spark)',
