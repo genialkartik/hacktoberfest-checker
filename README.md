@@ -21,6 +21,7 @@ which means only the PRs specified as contribution towards Hacktoberfest will on
 
 This question is the answer of creation of **[Hacktoberfest-Checker](https://gitfork.netlify.app/)**.
 A PR will be counted as valid and the user will get the tee/tshirt only when:
+
 - Submitted during the `month of October`
 - Submitted in a `public repo`
 - The PR is labelled as `hacktoberfest-accepted` by a maintainer OR submitted in a repo with the `hacktoberfest topic`
@@ -28,44 +29,42 @@ A PR will be counted as valid and the user will get the tee/tshirt only when:
 
 ## Requirements
 
-* Node v10+
-* create-react-app 3.4.1
+- Node v10+
+- create-react-app 3.4.1
 
 ## Run on Localhost:
 
-* Before starting, you must check your Github API rate limit (https://api.github.com/rate_limit) without Github Oauth and API Token.
-* To increase API rate limit [Generate a GitHub personal access token](https://github.com/settings/tokens/new?scopes=&description=Hacktoberfest%20Checker) using Github Oauth or [Basic Authorization](https://docs.github.com/en/free-pro-team@latest/rest/reference/rate-limit)
+- Before starting, you must check your Github API rate limit (https://api.github.com/rate_limit) without Github Oauth and API Token.
+- To increase API rate limit [Generate a GitHub personal access token](https://github.com/settings/tokens/new?scopes=&description=Hacktoberfest%20Checker) using Github Oauth or [Basic Authorization](https://docs.github.com/en/free-pro-team@latest/rest/reference/rate-limit)
 
-* clone repo: `git clone https://github.com/genialkartik/hacktobefest-checker`
+- clone repo: `git clone https://github.com/genialkartik/hacktobefest-checker`
 
-* For frontend:
-  * `$ npm i`
-  * `$ npm start`
-  *  goto `http://localhost:3000`
+  - `$ npm i` or `$ npm i -f`
+  - `$ npm start`
+  - goto `http://localhost:3000`
 
-* For Backend
-  * `no backend required`
-  
- ### Contribute
- 
- Open an Issue with label [here](https://github.com/genialkartik/hacktoberfest-checker/issues)
- 
- Or Open a Pull Request
- 
-  *  `git add .`
-  *  `git commit -m 'message'`
-  *  `git push -u origin main`
-  
+### Contribute
+
+Open an Issue with label [here](https://github.com/genialkartik/hacktoberfest-checker/issues)
+
+Or Open a Pull Request
+
+- `git add .`
+- `git commit -m 'message'`
+- `git push -u origin main`
+
 ## A big THANKS to Contributors
 
 [![Contributors](https://img.shields.io/github/contributors/genialkartik/hacktoberfest-checker?style=for-the-badge)](https://github.com//genialkartik/Macfolio/graphs/contributors)
 
-### Core Contributors 2021
-  - [Kartik Tyagi](https://github.com/genialkartik/)
-  - [Saumya Srivastava](https://github.com/saumyasrivastava08/)
+### Core Contributors 2022
+
+- [Kartik Tyagi](https://github.com/genialkartik/) (owner)
+- [Saumya Srivastava](https://github.com/saumyasrivastava08/)
+- [Sean B.](https://github.com/seanysean)
 
 ## License
 
 [![License](https://img.shields.io/github/license/genialkartik/hacktoberfest-checker?style=for-the-badge)](https://github.com/genialkartik/Macfolio/blob/master/LICENSE)
 
-MIT © 2021 [Kartik Tyagi](https://github.com/genialkartik)
+MIT © 2022 [Kartik Tyagi](https://github.com/genialkartik)
