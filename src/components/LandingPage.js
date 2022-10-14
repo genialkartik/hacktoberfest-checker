@@ -245,7 +245,7 @@ function LandingPage(props) {
                             to
                             <b>
                               <a
-                                href={pr.repo_url}
+                                href={pr.pr_url}
                                 target="_blank"
                                 rel="noopener noreferrer"
                               >
