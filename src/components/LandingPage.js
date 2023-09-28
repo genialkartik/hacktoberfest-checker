@@ -131,9 +131,12 @@ function LandingPage(props) {
             <div className={'avatarBox'}>
               <Image
                 roundedCircle
-                src={userImg || HackImg}
-                width="100%"
-                height="100%"
+                src={
+                  userImg ||
+                  'https://thumbnail.imgbin.com/2/4/7/imgbin-social-media-computer-icons-github-logo-symbol-social-media-ny7GSWdD1cDeyKrtvtZuYZPNr_t.jpg'
+                }
+                width="100px"
+                height="100px"
               />
             </div>
             <div className="formBox row align-items-center justify-content-around">
