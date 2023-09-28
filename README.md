@@ -60,8 +60,6 @@ Or Open a Pull Request
 ### Core Contributors 2023
 
 - [Kartik Tyagi](https://github.com/genialkartik/) (owner)
-- [Saumya Srivastava](https://github.com/saumyasrivastava08/)
-- [Sean B.](https://github.com/seanysean)
 
 ## License
 
