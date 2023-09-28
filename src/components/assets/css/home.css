@@ -1,37 +1,106 @@
+:root {
+  --main-background: rgb(23, 15, 30);
+  --main-background-accent: rgb(41 33 48);
+  --main-color: rgb(229, 225, 230);
+  --giga-color: #b4ff39; /* Names from the design doc https://www.figma.com/proto/esgmyAIiZ55aQG5v4yp9oN/Hacktoberfest-2022---Brand-Guidelines */
+  --spark: #ffe27d;
+  --surf: #64e3ff;
+  --psybeam: #9092ff;
+  --special-background: linear-gradient(
+    to right,
+    var(--spark),
+    var(--surf),
+    var(--psybeam)
+  );
+  --main-font: 'JetBrains Mono';
+}
+
+body {
+  color: var(--main-color);
+  font-family: var(--main-font);
+}
+
+::selection {
+  color: var(--main-background);
+  background-color: var(--giga-color);
+}
+
+a {
+  color: var(--main-color);
+  transition: 0.2s ease;
+  opacity: 0.9;
+}
+a:hover {
+  text-shadow: 0 0 3px var(--main-color);
+  opacity: 1;
+  color: var(--main-color);
+  text-decoration: none;
+}
 .appbody {
   min-height: 100vh;
   overflow: hidden;
   background-color: #f4f0e1;
 }
 .nav {
-  background-color: #dbe8d9;
-  height: auto !important; /* kept nav height auto to auto adjust for small devices */
+  background-color: var(--main-background-accent);
   padding: 0 !important;
   font-size: 85%;
-  color: #ff4400;
+  color: var(--main-color);
 }
 .appbody .main {
   min-height: calc(100vh - 40px);
-  /* display: grid;  -> removing this improves UI on phone devices */ 
-  background-color: #2b3531;
+  display: grid;
+  background-color: var(--main-background);
 }
 .main {
   background-color: #ffffff;
   text-decoration-color: rgb(255, 255, 255);
-  color: #dbe8d9;
   height: 100%;
   width: 100%;
 }
 .form {
   align-content: center;
-  color: rgb(214, 62, 62) !important;
-  background-color: #dbe8d9 !important;
-  border-color: rgb(218, 64, 8);
-  /* margin-left: 1rem; -> removing this improves UI on phone devices */
-  border-radius: 50px;
+  color: var(--main-background);
+  background-color: var(--main-color);
+  border-color: var(--main-color);
+  margin-left: 1rem;
   border-width: 2px;
   justify-content: center !important;
   padding: 20px;
+}
+.form:focus {
+  outline: none;
+  border-color: var(--main-color);
+  box-shadow: inset 0 0 0rem 0.2rem var(--main-background);
+}
+.special {
+  background: var(--special-background);
+  background-size: 120% 100%;
+  background-position: 0 0;
+  color: rgb(23, 15, 30);
+  filter: drop-shadow(rgba(255, 215, 77, 0.6) -1px -1px 2px)
+    drop-shadow(rgba(124, 127, 255, 0.6) 1px 1px 2px);
+  transition: 0.2s ease;
+  position: relative;
+  overflow: hidden;
+}
+.special::after {
+  content: '';
+  display: block;
+  position: absolute;
+  background: linear-gradient(RGBa(255, 255, 255, 0.4), transparent);
+  height: 200%;
+  width: 20%;
+  left: -10%;
+  transform: rotate(30deg);
+  transition: 0.2s ease;
+  transition-delay: 0.2s;
+}
+.special:hover {
+  background-position: 70% 0;
+}
+.special:hover::after {
+  left: 10%;
 }
 input:-internal-autofill-selected {
   appearance: menulist-button;
@@ -45,28 +114,24 @@ input:-internal-autofill-selected {
   align-items: center;
   justify-content: center;
   padding: 20px 0;
-  color: #2b3531;
 }
 .profile {
   display: flex;
   justify-content: center;
-  color: #dbe8d9;
   margin-bottom: 40px;
 }
 .profile div {
   text-align: center;
 }
-.check-your-progress-text {
-  margin-left: 1rem;
-  font-size: 2.5rem;
-}
 .form1 {
   padding: 5px 0 20px;
   width: 100%;
-  margin: 0px; /* default margin of -15px affected mobile UI */
 }
 .avatarBox {
   width: 100px;
+  height: 100px;
+  border-radius: 50%;
+  overflow: hidden;
 }
 .formBox {
   width: calc(100% - 100px);
@@ -78,21 +143,20 @@ input:-internal-autofill-selected {
   transition: 0.3s ease-in-out;
 }
 .pullbox:hover {
-  transform: scale(1.05);
   cursor: pointer;
 }
 
 .pullbox:hover .row {
-  box-shadow: 1px 8px 10px rgba(0, 0, 0, 0.7);
+  border-color: var(--surf);
 }
 .pullbox .row {
   display: flex;
   justify-content: space-between;
-  box-shadow: 1px 8px 10px rgba(0, 0, 0, 0.4);
+  border-bottom: 2px solid var(--main-background-accent);
   margin-bottom: 20px;
-  border-radius: 14px;
-  background-color: #677662;
-  padding: 1rem;
+  background-color: transparent;
+  padding: 1rem 0;
+  transition: 0.25s ease;
 }
 .pullbox .card {
   border: none;
@@ -131,11 +195,10 @@ input:-internal-autofill-selected {
   margin: 0 auto;
   width: 60px;
   height: 60px;
-  border: 2px solid #ccc;
+  border: 2px solid var(--spark);
   border-radius: 50%;
   border-left: none;
-  box-shadow: 0px 0px 5px 1px #777;
-  background-color: rgb(218, 64, 8);
+  box-shadow: 0px 0px 5px 1px var(--spark);
   animation: loader infinite 500ms;
 }
 .btn {
@@ -153,11 +216,23 @@ btn:hover {
   color: white;
 }
 @keyframes loader {
-  to {
+  0% {
     transform: rotate(0deg);
+    border-color: var(--spark);
+    box-shadow: 0px 0px 5px 1px var(--spark);
   }
-  from {
+  30% {
+    border-color: var(--surf);
+    box-shadow: 0px 0px 5px 1px var(--surf);
+  }
+  60% {
+    border-color: var(--psybeam);
+    box-shadow: 0px 0px 5px 1px var(--psybeam);
+  }
+  100% {
     transform: rotate(-360deg);
+    border-color: var(--spark);
+    box-shadow: 0px 0px 5px 1px var(--psybeam);
   }
 }
 
@@ -175,16 +250,7 @@ btn:hover {
 }
 
 footer a {
-  color: #d63e3e;
   font-weight: bold;
-}
-footer a:hover {
-  color: aqua;
-  text-decoration: none;
-}
-.blog-wrapper {
-  background-color: #2B3531;
-  padding-inline: 20%;
 }
 
 @media screen and (max-width: 575.99px) {
@@ -196,17 +262,5 @@ footer a:hover {
   }
   .formBox input {
     margin-bottom: 20px;
-  }
-  .hacktoberfest-imgbox img {
-    width: 90%; /* width decreased to fit the main hacktoberfest logo in phone screen */
-    height: 100%;
-  }
-  .check-your-progress-text {
-    margin-left: 1rem;
-    font-size: 2rem;
-  }
-  .blog-wrapper {
-    background-color: #2B3531;
-    padding-inline: 0%;
   }
 }

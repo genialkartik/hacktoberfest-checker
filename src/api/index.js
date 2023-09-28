@@ -1,3 +1,5 @@
+import defaultAvatar from '../components/assets/images/logohck.png';
+
 class GithubApi {
   async getPRs(username) {
     try {
@@ -10,7 +12,7 @@ class GithubApi {
         throw 'Invalid Username';
       }
       const prs_response = await fetch(
-        `${process.env.REACT_APP_GITHUB_API}?q=author:${username}+created:>2021-09-30T09:30:00+type:pr`
+        `${process.env.REACT_APP_GITHUB_API}?q=author:${username}+created:>2022-09-30T09:30:00+type:pr`
       );
 
       const user_prs_resp = await prs_response.json();
@@ -19,7 +21,7 @@ class GithubApi {
         throw 'Unable to fetch Pull Requests';
       }
       if (user_prs_resp?.total_count === 0 || !user_prs_resp.items.length) {
-        throw 'No contribution found! Click on Participate to start right away!';
+        throw 'No contribution found!';
       }
 
       const prs = user_prs_resp.items;
@@ -60,9 +62,7 @@ class GithubApi {
       }
       return {
         user_prs: ar_PR,
-        user_avatar_url:
-          userData.avatar_url ||
-          'https://hacktoberfest.digitalocean.com/_nuxt/img/sign-up-accent-right.2faed05.svg',
+        user_avatar_url: userData.avatar_url || defaultAvatar,
       };
     } catch (error) {
       return { err: error || 'Something went wrong' };

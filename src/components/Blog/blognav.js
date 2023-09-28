@@ -3,8 +3,9 @@ import * as React from 'react';
 import styled from 'styled-components';
 import OpenSource from '../Blog/OpenSource/index';
 import Footer from '../footer';
-import HacktoberFestSteps  from './HacktoberfestSteps';
+import HacktoberFestSteps from './HacktoberfestSteps';
 import HacktoberFestRules from './HacktoberfestRuless';
+import { Link } from 'react-router-dom';
 const Section = styled.section`
   padding: 1.4em;
   color: #dbe8d9;
@@ -24,9 +25,9 @@ export default function BlogNav() {
         <Grid container>
           <Grid item xs={2}>
             <Title>
-              <a href={'/'} style={{ color: '#999' }}>
+              <Link to={'/'} style={{ color: '#999' }}>
                 Home
-              </a>{' '}
+              </Link>{' '}
             </Title>
           </Grid>
         </Grid>

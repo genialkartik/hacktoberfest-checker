@@ -1,10 +1,11 @@
 import React, { useEffect, useState } from 'react';
 
 import { ButtonGroup } from 'react-bootstrap';
-import { Avatar, AvatarGroup, Button } from '@mui/material';
+import { Avatar, AvatarGroup, Button, Tooltip } from '@mui/material';
 import GithubApi from '../../api/index';
+import { Link } from 'react-router-dom';
 
-export default function Footer(props) {
+export default function Footer() {
   const [contributors, setContributors] = useState([]);
 
   useEffect(() => {
@@ -12,13 +13,12 @@ export default function Footer(props) {
       const contri = await GithubApi.getContributors();
       setContributors(contri || []);
     })();
-  }, [props]);
+  }, []);
 
   return (
     <footer
       style={{
         textAlign: 'center',
-        color: '#dbe8d9',
       }}
     >
       <div className="row justify-content-center">
@@ -32,17 +32,40 @@ export default function Footer(props) {
         </a>
       </div>
       <div style={{ marginBlock: 20 }} className="row justify-content-center">
-        <AvatarGroup style={{flexWrap: "wrap-reverse", justifyContent: "center", width: "85%", marginLeft: 8}} max={contributors.length || 2}>
+        <AvatarGroup
+          style={{
+            flexWrap: 'wrap-reverse',
+            justifyContent: 'center',
+            width: '85%',
+            marginLeft: 8,
+          }}
+          max={contributors.length || 2}
+        >
           {contributors?.map((contrib, idx) => (
-            <Avatar alt={contrib.login} key={idx} src={contrib.avatar_url} />
+            <Tooltip title={contrib?.login}>
+              <Avatar
+                alt={contrib?.login}
+                key={idx}
+                src={contrib?.avatar_url}
+                component="a"
+                target="_blank"
+                rel="noreferrer"
+                href={contrib?.html_url}
+                sx={{ cursor: 'pointer' }}
+              />
+            </Tooltip>
           ))}
         </AvatarGroup>
       </div>
-      <div style={{ marginBlock: 20, marginLeft: 16, marginRight: 16 }} className="row justify-content-center">
-        Attention : This site is just a fan made and it is not affiliated by
+      <div
+        style={{ marginBlock: 20, marginLeft: 16, marginRight: 16 }}
+        className="row justify-content-center"
+      >
+        Attention: This site is just a fan made project and it is not affiliated
+        with
         <a
-          style={{marginLeft: 4, marginTop: 1}}
-          href="https://hacktoberfest.digitalocean.com/"
+          style={{ marginLeft: 10, marginTop: 1 }}
+          href="https://hacktoberfest.com/"
           target="_blank"
           rel="noopener noreferrer"
         >
@@ -52,22 +75,34 @@ export default function Footer(props) {
       <div className="row justify-content-center">
         <ButtonGroup variant="text" aria-label="text button group">
           <Button
-            sx={{ color: '#ff4400' }}
-            href='/blog'
+            component={Link}
+            to="/blog"
+            style={{
+              fontFamily: 'var(--main-font)',
+              color: 'var(--main-color)',
+            }}
           >
             Blog
           </Button>
           <Button
-            sx={{ color: '#ff4400' }}
-            href='http://github.com/genialkartik/hacktoberfest-checker'
+            component={'a'}
+            href="http://github.com/genialkartik/hacktoberfest-checker"
             target="_blank"
+            style={{
+              fontFamily: 'var(--main-font)',
+              color: 'var(--main-color)',
+            }}
           >
             GitHub
           </Button>
           <Button
-            sx={{ color: '#ff4400' }}
-            href='https://hacktoberfest.digitalocean.com/'
+            component={'a'}
+            href="https://hacktoberfest.com/"
             target="_blank"
+            style={{
+              fontFamily: 'var(--main-font)',
+              color: 'var(--main-color)',
+            }}
           >
             Participate
           </Button>
