@@ -1,4 +1,4 @@
-# Hacktoberfest Checker 2022
+# Hacktoberfest Checker 2023
 
 [![Open Issues](https://img.shields.io/github/issues/genialkartik/hacktoberfest-checker?style=for-the-badge&logo=github)](https://github.com/genialkartik/hacktoberfest-checker/issues) [![Forks](https://img.shields.io/github/forks/genialkartik/hacktoberfest-checker?style=for-the-badge&logo=github)](https://github.com/genialkartik/hacktoberfest-checker/network/members) [![Stars](https://img.shields.io/github/stars/genialkartik/hacktoberfest-checker?style=for-the-badge&logo=reverbnation)](https://github.com/code-monk08/connect-four/stargazers) ![Open Source Love](https://img.shields.io/badge/Open%20Source-%E2%99%A5-red?style=for-the-badge&logo=open-source-initiative)
 
@@ -57,7 +57,7 @@ Or Open a Pull Request
 
 [![Contributors](https://img.shields.io/github/contributors/genialkartik/hacktoberfest-checker?style=for-the-badge)](https://github.com//genialkartik/Macfolio/graphs/contributors)
 
-### Core Contributors 2022
+### Core Contributors 2023
 
 - [Kartik Tyagi](https://github.com/genialkartik/) (owner)
 - [Saumya Srivastava](https://github.com/saumyasrivastava08/)
@@ -67,4 +67,4 @@ Or Open a Pull Request
 
 [![License](https://img.shields.io/github/license/genialkartik/hacktoberfest-checker?style=for-the-badge)](https://github.com/genialkartik/Macfolio/blob/master/LICENSE)
 
-MIT © 2022 [Kartik Tyagi](https://github.com/genialkartik)
+MIT © 2023 [Kartik Tyagi](https://github.com/genialkartik)
