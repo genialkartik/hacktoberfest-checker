@@ -1,10 +1,47 @@
+/* Hacktoberfest 2025 App Styles */
 .App {
   text-align: center;
+  min-height: 100vh;
+  background: linear-gradient(135deg, #0b0e14 0%, #1a1f29 100%);
+  position: relative;
+}
+
+.App::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background:
+    radial-gradient(
+      circle at 20% 80%,
+      rgba(255, 139, 0, 0.1) 0%,
+      transparent 50%
+    ),
+    radial-gradient(
+      circle at 80% 20%,
+      rgba(76, 154, 255, 0.1) 0%,
+      transparent 50%
+    ),
+    radial-gradient(
+      circle at 40% 40%,
+      rgba(156, 39, 176, 0.05) 0%,
+      transparent 50%
+    );
+  pointer-events: none;
+  z-index: 0;
+}
+
+.App > * {
+  position: relative;
+  z-index: 1;
 }
 
 .App-logo {
   height: 40vmin;
   pointer-events: none;
+  filter: drop-shadow(0 0 20px rgba(255, 139, 0, 0.3));
 }
 
 @media (prefers-reduced-motion: no-preference) {
@@ -14,7 +51,12 @@
 }
 
 .App-header {
-  background-color: #282c34;
+  background: linear-gradient(
+    135deg,
+    rgba(26, 31, 41, 0.95),
+    rgba(11, 14, 20, 0.95)
+  );
+  backdrop-filter: blur(10px);
   min-height: 100vh;
   display: flex;
   flex-direction: column;
@@ -22,10 +64,43 @@
   justify-content: center;
   font-size: calc(10px + 2vmin);
   color: white;
+  position: relative;
+}
+
+.App-header::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background:
+    linear-gradient(
+      45deg,
+      transparent 30%,
+      rgba(255, 139, 0, 0.05) 50%,
+      transparent 70%
+    ),
+    linear-gradient(
+      -45deg,
+      transparent 30%,
+      rgba(76, 154, 255, 0.05) 50%,
+      transparent 70%
+    );
+  animation: shimmer 8s ease-in-out infinite;
 }
 
 .App-link {
-  color: #61dafb;
+  color: #ff8a00;
+  transition: all 0.3s ease;
+  text-decoration: none;
+  font-weight: 600;
+}
+
+.App-link:hover {
+  color: #e91e63;
+  text-shadow: 0 0 10px rgba(255, 138, 0, 0.5);
+  transform: translateY(-2px);
 }
 
 @keyframes App-logo-spin {
@@ -34,5 +109,96 @@
   }
   to {
     transform: rotate(360deg);
+  }
+}
+
+@keyframes shimmer {
+  0%,
+  100% {
+    opacity: 0.3;
+  }
+  50% {
+    opacity: 0.7;
+  }
+}
+
+/* Global Hacktoberfest 2025 Utilities */
+.hf-gradient-text {
+  background: linear-gradient(135deg, #ff8a00, #e91e63);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  font-weight: 700;
+}
+
+.hf-button {
+  background: linear-gradient(135deg, #ff8a00, #e91e63);
+  border: none;
+  border-radius: 12px;
+  color: white;
+  padding: 12px 24px;
+  font-weight: 600;
+  font-size: 14px;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  transition: all 0.3s ease;
+  cursor: pointer;
+  box-shadow:
+    0 4px 6px -1px rgba(0, 0, 0, 0.1),
+    0 2px 4px -1px rgba(0, 0, 0, 0.06);
+}
+
+.hf-button:hover {
+  transform: translateY(-2px);
+  box-shadow:
+    0 10px 15px -3px rgba(0, 0, 0, 0.1),
+    0 4px 6px -2px rgba(0, 0, 0, 0.05);
+  background: linear-gradient(135deg, #e91e63, #ff8a00);
+}
+
+.hf-button:active {
+  transform: translateY(0);
+}
+
+.hf-card {
+  background: #1e2328;
+  border: 1px solid #2d3748;
+  border-radius: 12px;
+  padding: 24px;
+  box-shadow:
+    0 1px 3px 0 rgba(0, 0, 0, 0.1),
+    0 1px 2px 0 rgba(0, 0, 0, 0.06);
+  transition: all 0.3s ease;
+}
+
+.hf-card:hover {
+  transform: translateY(-5px);
+  box-shadow:
+    0 10px 15px -3px rgba(0, 0, 0, 0.1),
+    0 4px 6px -2px rgba(0, 0, 0, 0.05);
+  border-color: #ff8a00;
+}
+
+/* Animation utilities */
+.fade-in-up {
+  animation: fadeInUp 0.6s ease forwards;
+}
+
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(30px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* Responsive text sizes */
+@media (max-width: 768px) {
+  .App-header {
+    font-size: calc(8px + 2vmin);
+    padding: 20px;
   }
 }
