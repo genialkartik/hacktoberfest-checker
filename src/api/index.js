@@ -3,7 +3,7 @@ import defaultAvatar from '../components/assets/images/logohck.png';
 
 // Create axios instance with default config
 const apiClient = axios.create({
-  baseURL: process.env.REACT_APP_GITHUB_BASEURL,
+  baseURL: 'https://api.github.com',
   timeout: 10000,
   headers: {
     Accept: 'application/vnd.github+json',
@@ -85,7 +85,7 @@ class GithubApi {
         try {
           // Fetch repository topics
           const repoTopicsResponse = await apiClient.get(
-            `${pr.repository_url.replace(process.env.REACT_APP_GITHUB_BASEURL, '')}/topics`,
+            `${pr.repository_url.replace('https://api.github.com', '')}/topics`,
             {
               headers: {
                 Accept: 'application/vnd.github+json',
