@@ -41,7 +41,7 @@ class GithubApi {
       let userPrsResp = null;
 
       const prs_response = await fetch(
-        `${process.env.REACT_APP_GITHUB_API}?q=author:${trimmedUsername}+created:>2025-09-30T23:59:59+type:pr`,
+        `https://api.github.com/search/issues?q=author:${trimmedUsername}+created:>2025-09-30T23:59:59+type:pr`,
       );
 
       const user_prs_resp = await prs_response.json();
@@ -53,7 +53,7 @@ class GithubApi {
         // Try 2024 data if no 2025 data found
         console.log('No 2025 data found, trying 2024...');
         const fallback_response = await fetch(
-          `${process.env.REACT_APP_GITHUB_API}?q=author:${trimmedUsername}+created:>2024-09-30T09:30:00+type:pr`,
+          `https://api.github.com/search/issues?q=author:${trimmedUsername}+created:>2024-09-30T09:30:00+type:pr`,
         );
         const fallback_resp = await fallback_response.json();
 
