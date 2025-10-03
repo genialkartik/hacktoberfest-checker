@@ -6,17 +6,17 @@ const apiClient = axios.create({
   baseURL: 'https://api.github.com',
   timeout: 10000,
   headers: {
-    'Accept': 'application/vnd.github+json',
+    Accept: 'application/vnd.github+json',
     'User-Agent': 'Hacktoberfest-Checker-2025/1.0.0',
     'X-GitHub-Api-Version': '2022-11-28',
   },
 });
 
 // Add authorization header if token is available
-if (process.env.REACT_APP_HEADER_AUTHORIZATION) {
-  apiClient.defaults.headers.common['Authorization'] =
-    `token ${process.env.REACT_APP_HEADER_AUTHORIZATION}`;
-}
+// if (process.env.REACT_APP_HEADER_AUTHORIZATION) {
+//   apiClient.defaults.headers.common['Authorization'] =
+//     `token ${process.env.REACT_APP_HEADER_AUTHORIZATION}`;
+// }
 
 class GithubApi {
   async getPRs(username) {
@@ -37,37 +37,36 @@ class GithubApi {
         throw new Error('Invalid Username or User not found');
       }
 
-      // Build search query for Hacktoberfest 2025
-      const searchQuery = `author:${trimmedUsername}+created:>2025-09-30T09:30:00+type:pr`;
-      
-      const prsResponse = await apiClient.get('/search/issues', {
-        params: {
-          q: searchQuery,
-        },
-      });
-      const userPrsResp = prsResponse?.data;
+      // Use the original working fetch approach
+      let userPrsResp = null;
 
-      // Handle API response validation
-      if (!userPrsResp) {
-        throw new Error('Failed to fetch pull requests');
+      const prs_response = await fetch(
+        `${process.env.REACT_APP_GITHUB_API}?q=author:${trimmedUsername}+created:>2025-09-30T23:59:59+type:pr`,
+      );
+
+      const user_prs_resp = await prs_response.json();
+
+      if (user_prs_resp?.incomplete_results) {
+        throw new Error('Unable to fetch Pull Requests');
+      }
+      if (user_prs_resp?.total_count === 0 || !user_prs_resp.items.length) {
+        // Try 2024 data if no 2025 data found
+        console.log('No 2025 data found, trying 2024...');
+        const fallback_response = await fetch(
+          `${process.env.REACT_APP_GITHUB_API}?q=author:${trimmedUsername}+created:>2024-09-30T09:30:00+type:pr`,
+        );
+        const fallback_resp = await fallback_response.json();
+
+        if (fallback_resp?.total_count === 0 || !fallback_resp.items.length) {
+          throw new Error('No contribution found!');
+        }
+
+        userPrsResp = fallback_resp;
+      } else {
+        userPrsResp = user_prs_resp;
       }
 
-      if (userPrsResp.incomplete_results === true) {
-        throw new Error('Unable to fetch complete Pull Requests data');
-      }
-
-      if (
-        !userPrsResp.total_count ||
-        userPrsResp.total_count === 0 ||
-        !Array.isArray(userPrsResp.items) ||
-        userPrsResp.items.length === 0
-      ) {
-        throw new Error('No Hacktoberfest 2025 contributions found!');
-      }
-
-      const prs = userPrsResp.items;
-
-      // Process each pull request
+      const prs = userPrsResp?.items || [];
       for (let i = 0; i < prs.length; i++) {
         const pr = prs[i];
 
@@ -89,7 +88,7 @@ class GithubApi {
             `${pr.repository_url.replace('https://api.github.com', '')}/topics`,
             {
               headers: {
-                'Accept': 'application/vnd.github+json',
+                Accept: 'application/vnd.github+json',
               },
             },
           );
