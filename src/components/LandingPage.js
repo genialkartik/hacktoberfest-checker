@@ -1,7 +1,6 @@
 import React, { useState } from 'react';
 import { Form, Image, Card } from 'react-bootstrap';
-import './assets/css/home.css';
-import HackImg from './assets/images/logohck.png';
+import './assets/Css/home.css';
 import HacktoberfestLogo from '../components/assets/images/hack.svg';
 import CorrectImage from './assets/images/correct.png';
 import WrongImage from './assets/images/wrong.png';
@@ -15,8 +14,8 @@ function CircularProgressWithLabel(props) {
     props.value > 75
       ? 'var(--psybeam)'
       : props.value > 50
-      ? 'var(--surf)'
-      : 'var(--spark)';
+        ? 'var(--surf)'
+        : 'var(--spark)';
   return (
     <Box sx={{ position: 'relative', display: 'inline-flex' }}>
       <CircularProgress
@@ -64,47 +63,104 @@ function LandingPage(props) {
 
     try {
       setLoader(true);
-      if (!username) {
-        throw 'User not found';
-      }
-      const resp = await GithubApi.getPRs(username);
-      if (resp.err) {
-        throw resp.err || 'Something gone wrong!';
-      }
-      if (resp.user_prs.length <= 0) {
-        throw 'No contribution found!';
-      }
-      setPullRequest(resp.user_prs || []);
-      setUserAvatar(resp.user_avatar_url);
-      if (resp?.user_prs?.length) {
-        for (let i = 0; i < resp.user_prs?.length; i++) {
-          let create_date = new Date(resp.user_prs[i].created_at);
-          create_date.setDate(create_date.getDate() + 7);
-          if (new Date() >= create_date) {
-            resp.user_prs[i].review = 'Completed';
-          } else {
-            let timeDiff = Math.abs(
-              create_date.getTime() - new Date().getTime()
-            );
-            let daysDiff = Math.ceil(timeDiff / (1000 * 3600 * 24));
-            resp.user_prs[i].review = daysDiff + ' days left';
-          }
-        }
+
+      // Validate username input
+      if (!username || typeof username !== 'string' || username.trim() === '') {
+        throw new Error('Please enter a valid GitHub username');
       }
 
-      if (resp.user_prs?.length >= 4) {
-        setCount(4);
-        setMessage('Congrats!! You have done 4 PR(s)');
-      } else {
-        var Pr_left = 4 - resp.user_prs?.length;
-        setCount(4 - Pr_left);
-        setMessage("You're just " + Pr_left + ' PR(s) away to get a tee');
+      const resp = await GithubApi.getPRs(username.trim());
+
+      // Check if response has error
+      if (resp.err) {
+        throw new Error(resp.err);
       }
-      setBool(true);
+
+      // Validate response structure
+      if (!resp || typeof resp !== 'object') {
+        throw new Error('Invalid response from API');
+      }
+
+      const userPrs = resp.user_prs || [];
+      const validPrs = resp.valid_prs || 0;
+      const totalPrs = resp.total_prs || 0;
+
+      // Set user data
+      setPullRequest(userPrs);
+      setUserAvatar(resp.user_avatar_url || '');
+
+      // Calculate review periods for each PR
+      if (Array.isArray(userPrs) && userPrs.length > 0) {
+        const updatedPrs = userPrs.map((pr) => {
+          if (!pr.created_at) {
+            return { ...pr, review: 'Unknown date' };
+          }
+
+          try {
+            const createDate = new Date(pr.created_at);
+            const reviewEndDate = new Date(createDate);
+            reviewEndDate.setDate(reviewEndDate.getDate() + 7);
+
+            if (new Date() >= reviewEndDate || pr.merged_at) {
+              return { ...pr, review: 'Completed' };
+            } else {
+              const timeDiff = Math.abs(
+                reviewEndDate.getTime() - new Date().getTime(),
+              );
+              const daysDiff = Math.ceil(timeDiff / (1000 * 3600 * 24));
+              return {
+                ...pr,
+                review: `${daysDiff} day${daysDiff !== 1 ? 's' : ''} left`,
+              };
+            }
+          } catch (dateError) {
+            console.warn('Error parsing date for PR:', pr.title, dateError);
+            return { ...pr, review: 'Date error' };
+          }
+        });
+        setPullRequest(updatedPrs);
+      }
+
+      // Calculate progress and messages based on valid PRs for Hacktoberfest 2025
+      const requiredPrs = 4;
+      const validPrsCount = Math.min(validPrs, requiredPrs);
+
+      setCount(validPrsCount);
+
+      if (validPrsCount >= requiredPrs) {
+        setMessage(
+          '🎉 Congratulations! You have completed Hacktoberfest 2025 with 4+ valid PRs!',
+        );
+        setBool(true);
+      } else if (validPrsCount > 0) {
+        const remaining = requiredPrs - validPrsCount;
+        setMessage(
+          `Great start! You need ${remaining} more valid PR${remaining !== 1 ? 's' : ''} to complete Hacktoberfest 2025`,
+        );
+        setBool(true);
+      } else if (totalPrs > 0) {
+        setMessage(
+          'You have PRs, but none are valid for Hacktoberfest 2025. Make sure they are in repos with "hacktoberfest" topic or have "hacktoberfest-accepted" label.',
+        );
+        setBool(true);
+      } else {
+        setMessage(
+          'No Hacktoberfest 2025 contributions found. Start contributing to eligible repositories!',
+        );
+        setBool(false);
+      }
       setLoader(false);
     } catch (error) {
+      console.error('Error fetching pull requests:', error);
       setLoader(false);
-      setMessage(error);
+      setBool(false);
+      setCount(0);
+      setPullRequest([]);
+      setUserAvatar('');
+
+      // Display user-friendly error message
+      const errorMessage = error?.message || 'An unexpected error occurred';
+      setMessage(errorMessage);
     }
   };
 
@@ -260,7 +316,7 @@ function LandingPage(props) {
                           <p style={{ fontSize: '3mm' }}>
                             <br />
                             {new Date(
-                              Date.parse(pr.created_at)
+                              Date.parse(pr.created_at),
                             ).toLocaleString()}
                           </p>
                         </Card>
