@@ -1,81 +1,192 @@
+import axios from 'axios';
 import defaultAvatar from '../components/assets/images/logohck.png';
+
+// Create axios instance with default config
+const apiClient = axios.create({
+  baseURL: 'https://api.github.com',
+  timeout: 10000,
+  headers: {
+    'Accept': 'application/vnd.github+json',
+    'User-Agent': 'Hacktoberfest-Checker-2025/1.0.0',
+    'X-GitHub-Api-Version': '2022-11-28',
+  },
+});
+
+// Add authorization header if token is available
+if (process.env.REACT_APP_HEADER_AUTHORIZATION) {
+  apiClient.defaults.headers.common['Authorization'] =
+    `token ${process.env.REACT_APP_HEADER_AUTHORIZATION}`;
+}
 
 class GithubApi {
   async getPRs(username) {
     try {
+      // Validate input
+      if (!username || typeof username !== 'string' || username.trim() === '') {
+        throw new Error('Username is required and must be a valid string');
+      }
+
+      const trimmedUsername = username.trim();
       let ar_PR = [];
-      const user_response = await fetch(
-        `https://api.github.com/users/${username}`
-      );
-      const userData = await user_response.json();
-      if (!userData.id) {
-        throw 'Invalid Username';
-      }
-      const prs_response = await fetch(
-        `${process.env.REACT_APP_GITHUB_API}?q=author:${username}+created:>2022-09-30T09:30:00+type:pr`
-      );
 
-      const user_prs_resp = await prs_response.json();
+      // Fetch user data
+      const userResponse = await apiClient.get(`/users/${trimmedUsername}`);
+      const userData = userResponse?.data;
 
-      if (user_prs_resp?.incomplete_results) {
-        throw 'Unable to fetch Pull Requests';
-      }
-      if (user_prs_resp?.total_count === 0 || !user_prs_resp.items.length) {
-        throw 'No contribution found!';
+      if (!userData || !userData.id) {
+        throw new Error('Invalid Username or User not found');
       }
 
-      const prs = user_prs_resp.items;
+      // Build search query for Hacktoberfest 2025
+      const searchQuery = `author:${trimmedUsername}+created:>2025-09-30T09:30:00+type:pr`;
+      
+      const prsResponse = await apiClient.get('/search/issues', {
+        params: {
+          q: searchQuery,
+        },
+      });
+      const userPrsResp = prsResponse?.data;
 
+      // Handle API response validation
+      if (!userPrsResp) {
+        throw new Error('Failed to fetch pull requests');
+      }
+
+      if (userPrsResp.incomplete_results === true) {
+        throw new Error('Unable to fetch complete Pull Requests data');
+      }
+
+      if (
+        !userPrsResp.total_count ||
+        userPrsResp.total_count === 0 ||
+        !Array.isArray(userPrsResp.items) ||
+        userPrsResp.items.length === 0
+      ) {
+        throw new Error('No Hacktoberfest 2025 contributions found!');
+      }
+
+      const prs = userPrsResp.items;
+
+      // Process each pull request
       for (let i = 0; i < prs.length; i++) {
-        var _has_hacktoberfest_label = prs[i].labels.some((label) => {
-          return label.name === 'hacktoberfest-accepted';
-        });
+        const pr = prs[i];
 
-        const user_repo_topics = await fetch(
-          prs[i].repository_url + '/topics',
-          {
-            method: 'GET',
-            headers: {
-              Accept: 'application/vnd.github.mercy-preview+json',
-              Authorization: `token ${process.env.REACT_APP_HEADER_AUTHORIZATION}`,
+        // Validate PR object
+        if (!pr || !pr.repository_url) {
+          continue; // Skip invalid PR objects
+        }
+
+        // Check for hacktoberfest-accepted label
+        const hasHacktoberfestLabel = Array.isArray(pr.labels)
+          ? pr.labels.some((label) => label?.name === 'hacktoberfest-accepted')
+          : false;
+
+        let hasHacktoberfestTopic = false;
+
+        try {
+          // Fetch repository topics
+          const repoTopicsResponse = await apiClient.get(
+            `${pr.repository_url.replace('https://api.github.com', '')}/topics`,
+            {
+              headers: {
+                'Accept': 'application/vnd.github+json',
+              },
             },
-          }
-        );
-        const repo_topics = await user_repo_topics.json();
+          );
 
-        var _has_hacktoberfest_topic =
-          repo_topics.names?.includes('hacktoberfest');
+          const repoTopics = repoTopicsResponse?.data;
+          hasHacktoberfestTopic = Array.isArray(repoTopics?.names)
+            ? repoTopics.names.includes('hacktoberfest')
+            : false;
+        } catch (topicError) {
+          console.warn(
+            `Failed to fetch topics for ${pr.repository_url}:`,
+            topicError.message,
+          );
+          // Continue without topic info
+        }
+
+        // Extract repository name safely
+        const repoUrlParts = pr.repository_url.split('/');
+        const repoName =
+          repoUrlParts.length > 0
+            ? repoUrlParts[repoUrlParts.length - 1]
+            : 'Unknown Repository';
 
         ar_PR.push({
-          title: prs[i].title,
-          pr_url: prs[i].html_url,
-          repo_name:
-            prs[i].repository_url.split('/')[
-              prs[i].repository_url.split('/').length - 1
-            ],
-          repo_url: prs[i].repository_url,
-          _has_hacktoberfest_topic,
-          _has_hacktoberfest_label,
-          state: prs[i].state,
-          created_at: prs[i].created_at,
+          title: pr.title || 'No title',
+          pr_url: pr.html_url || '',
+          repo_name: repoName,
+          repo_url: pr.repository_url || '',
+          _has_hacktoberfest_topic: hasHacktoberfestTopic,
+          _has_hacktoberfest_label: hasHacktoberfestLabel,
+          state: pr.state || 'unknown',
+          created_at: pr.created_at || null,
+          merged_at: pr.merged_at || null,
+          is_valid: hasHacktoberfestLabel || hasHacktoberfestTopic,
         });
       }
+
       return {
         user_prs: ar_PR,
         user_avatar_url: userData.avatar_url || defaultAvatar,
+        user_name: userData.name || userData.login || 'Unknown User',
+        user_login: userData.login || 'unknown',
+        total_prs: ar_PR.length,
+        valid_prs: ar_PR.filter((pr) => pr.is_valid).length,
       };
     } catch (error) {
-      return { err: error || 'Something went wrong' };
+      console.error('Error in getPRs:', error);
+
+      // Handle axios errors specifically
+      if (error.response) {
+        const status = error.response.status;
+        if (status === 404) {
+          throw new Error('User not found');
+        } else if (status === 403) {
+          throw new Error('API rate limit exceeded. Please try again later.');
+        } else if (status === 422) {
+          throw new Error('Invalid search query parameters');
+        } else {
+          throw new Error(
+            `API Error: ${error.response.statusText || 'Unknown error'}`,
+          );
+        }
+      } else if (error.code === 'ECONNABORTED') {
+        throw new Error(
+          'Request timeout. Please check your internet connection.',
+        );
+      } else if (error.message) {
+        throw error; // Re-throw our custom errors
+      } else {
+        throw new Error(
+          'An unexpected error occurred while fetching pull requests',
+        );
+      }
     }
   }
 
   async getContributors() {
-    const project_contri_resp = await fetch(
-      `https://api.github.com/repos/genialkartik/hacktoberfest-checker/contributors`
-    );
-    const contributors = (await project_contri_resp.json()) || [];
-    return contributors;
+    try {
+      const response = await apiClient.get(
+        '/repos/genialkartik/hacktoberfest-checker/contributors',
+      );
+      const contributors = response?.data;
+
+      if (!Array.isArray(contributors)) {
+        console.warn('Contributors data is not an array:', contributors);
+        return [];
+      }
+
+      return contributors.filter(
+        (contributor) => contributor && contributor.login,
+      );
+    } catch (error) {
+      console.error('Error fetching contributors:', error);
+      return []; // Return empty array instead of throwing
+    }
   }
 }
 
-export default new GithubApi();
+const githubApi = new GithubApi();
+export default githubApi;

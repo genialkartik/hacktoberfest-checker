@@ -133,7 +133,7 @@ export default function HacktoberFestSteps() {
           <i>Excluded Project</i>
         </b>{' '}
         that means the repository where the PR is created is not considered for
-        "<strong>Hacktoberfest</strong>2022". <br />
+        "<strong>Hacktoberfest</strong>2025". <br />
         <Image src={Step7} />
         <br />
       </Definition>

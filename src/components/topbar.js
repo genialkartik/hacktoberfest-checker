@@ -1,7 +1,7 @@
 import React from 'react';
 
 import { Container, Row, Col } from 'react-bootstrap';
-import './assets/css/home.css';
+import './assets/Css/home.css';
 import announcement from './assets/images/announcement.png';
 
 function TopBar() {

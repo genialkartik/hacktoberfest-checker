@@ -1,4 +1,4 @@
-# Hacktoberfest Checker 2023
+# Hacktoberfest Checker 2025
 
 [![Open Issues](https://img.shields.io/github/issues/genialkartik/hacktoberfest-checker?style=for-the-badge&logo=github)](https://github.com/genialkartik/hacktoberfest-checker/issues) [![Forks](https://img.shields.io/github/forks/genialkartik/hacktoberfest-checker?style=for-the-badge&logo=github)](https://github.com/genialkartik/hacktoberfest-checker/network/members) [![Stars](https://img.shields.io/github/stars/genialkartik/hacktoberfest-checker?style=for-the-badge&logo=reverbnation)](https://github.com/code-monk08/connect-four/stargazers) ![Open Source Love](https://img.shields.io/badge/Open%20Source-%E2%99%A5-red?style=for-the-badge&logo=open-source-initiative)
 
@@ -29,8 +29,9 @@ A PR will be counted as valid and the user will get the tee/tshirt only when:
 
 ## Requirements
 
-- Node v10+
-- create-react-app 3.4.1
+- Node v18+ (LTS)
+- React 18.3+
+- Modern web browser with ES2020+ support
 
 ## Run on Localhost:
 
@@ -38,7 +39,6 @@ A PR will be counted as valid and the user will get the tee/tshirt only when:
 - To increase API rate limit [Generate a GitHub personal access token](https://github.com/settings/tokens/new?scopes=&description=Hacktoberfest%20Checker) using Github Oauth or [Basic Authorization](https://docs.github.com/en/free-pro-team@latest/rest/reference/rate-limit)
 
 - clone repo: `git clone https://github.com/genialkartik/hacktobefest-checker`
-
   - `$ npm i` or `$ npm i -f`
   - `$ npm start`
   - goto `http://localhost:3000`
@@ -57,7 +57,7 @@ Or Open a Pull Request
 
 [![Contributors](https://img.shields.io/github/contributors/genialkartik/hacktoberfest-checker?style=for-the-badge)](https://github.com//genialkartik/Macfolio/graphs/contributors)
 
-### Core Contributors 2023
+### Core Contributors 2025
 
 - [Kartik Tyagi](https://github.com/genialkartik/) (owner)
 
@@ -65,4 +65,4 @@ Or Open a Pull Request
 
 [![License](https://img.shields.io/github/license/genialkartik/hacktoberfest-checker?style=for-the-badge)](https://github.com/genialkartik/Macfolio/blob/master/LICENSE)
 
-MIT © 2023 [Kartik Tyagi](https://github.com/genialkartik)
+MIT © 2025 [Kartik Tyagi](https://github.com/genialkartik)
