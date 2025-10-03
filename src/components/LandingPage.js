@@ -1,7 +1,6 @@
 import React, { useState } from 'react';
 import { Form, Image, Card } from 'react-bootstrap';
 import './assets/Css/home.css';
-import HacktoberfestLogo from '../components/assets/images/hack.svg';
 import CorrectImage from './assets/images/correct.png';
 import WrongImage from './assets/images/wrong.png';
 import GithubApi from '../api/index';

@@ -112,3 +112,4 @@ build
 *config*.*
 *credentials*.*
 package-lock.json
+.env.prod
