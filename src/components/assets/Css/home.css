@@ -169,6 +169,7 @@ input:-internal-autofill-selected {
 }
 .card-info p {
   margin: 0;
+  color: rgb(159, 159, 159);
 }
 .card-info a {
   color: #fff;
@@ -185,6 +186,7 @@ input:-internal-autofill-selected {
   font-weight: 600;
   height: 30px;
   line-height: 30px;
+  color: rgb(159, 159, 159);
 }
 
 .loader {

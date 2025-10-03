@@ -122,14 +122,14 @@ function LandingPage(props) {
       }
 
       // Calculate progress and messages based on valid PRs for Hacktoberfest 2025
-      const requiredPrs = 4;
+      const requiredPrs = 6;
       const validPrsCount = Math.min(validPrs, requiredPrs);
 
       setCount(validPrsCount);
 
       if (validPrsCount >= requiredPrs) {
         setMessage(
-          '🎉 Congratulations! You have completed Hacktoberfest 2025 with 4+ valid PRs!',
+          '🎉 Congratulations! You have completed Hacktoberfest 2025 with 6+ valid PRs!',
         );
         setBool(true);
       } else if (validPrsCount > 0) {
@@ -227,7 +227,9 @@ function LandingPage(props) {
             <div className={'profile'}>
               <div>
                 {bool && (
-                  <CircularProgressWithLabel value={(count / 4) * 100} />
+                  <CircularProgressWithLabel
+                    value={Math.round((count / 6) * 100)}
+                  />
                 )}
                 <h4>{message || ''} </h4>
               </div>

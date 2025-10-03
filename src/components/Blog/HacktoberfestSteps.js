@@ -40,8 +40,8 @@ export default function HacktoberFestSteps() {
         </a>
         is a Program for Open-Source Contributors conducted in the month of
         October. It encourages participation in the open source community.
-        Participants can earn a limited edition T-shirt &amp; stickers by
-        contributing.There are some rules you need to follow .
+        Participants can earn digital badges and recognition as Super
+        Contributors by contributing.There are some rules you need to follow .
         <br />
         <strong>Below steps and Rules are mentioned </strong>
       </Definition>
@@ -80,9 +80,9 @@ export default function HacktoberFestSteps() {
         . <br />
         b). Event Organizer :- <br />
         c). Participant :- These are refered to as persons who are participating
-        in <strong>hacktoberfest</strong> . If atleast 4 PR's gets merged they
-        are considered as contributors &amp; are eligible for the goodies .{' '}
-        <br />
+        in <strong>hacktoberfest</strong> . If atleast 6 PR's gets merged they
+        are considered as contributors &amp; are eligible for digital badges and
+        recognition as Super Contributors . <br />
         <Image src={Step4} />
         <br />
         6). Go to the repository which are participating in{' '}

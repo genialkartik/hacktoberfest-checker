@@ -2,7 +2,7 @@
 
 [![Open Issues](https://img.shields.io/github/issues/genialkartik/hacktoberfest-checker?style=for-the-badge&logo=github)](https://github.com/genialkartik/hacktoberfest-checker/issues) [![Forks](https://img.shields.io/github/forks/genialkartik/hacktoberfest-checker?style=for-the-badge&logo=github)](https://github.com/genialkartik/hacktoberfest-checker/network/members) [![Stars](https://img.shields.io/github/stars/genialkartik/hacktoberfest-checker?style=for-the-badge&logo=reverbnation)](https://github.com/code-monk08/connect-four/stargazers) ![Open Source Love](https://img.shields.io/badge/Open%20Source-%E2%99%A5-red?style=for-the-badge&logo=open-source-initiative)
 
-It'll help to know how close are you to get a tee/tshirt or why your PRs are invalid according to the latest policy of [Hacktoberfest](https://hacktoberfest.com/participation/).
+It'll help to know how close are you to complete Hacktoberfest 2025 by making 6 valid pull requests or why your PRs are invalid according to the latest policy of [Hacktoberfest](https://hacktoberfest.com/participation/).
 
 Check Your Hacktoberfest Status: **[gitfork.netlify.app/](https://gitfork.netlify.app/)**
 
@@ -20,7 +20,7 @@ which means only the PRs specified as contribution towards Hacktoberfest will on
 ### How to know whether a Pull Request is valid or not?
 
 This question is the answer of creation of **[Hacktoberfest-Checker](https://gitfork.netlify.app/)**.
-A PR will be counted as valid and the user will get the tee/tshirt only when:
+A PR will be counted as valid and will count towards your Hacktoberfest 2025 completion (6 valid PRs required) only when:
 
 - Submitted during the `month of October`
 - Submitted in a `public repo`
