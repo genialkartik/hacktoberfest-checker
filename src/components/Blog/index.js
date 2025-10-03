@@ -9,7 +9,7 @@ export default function Blog() {
       <TopBar />
       <Container
         sx={{
-          background: '#170F1E',
+          background: '#1C1C3F',
           my: 2,
           borderRadius: '20px',
         }}
