@@ -18,7 +18,7 @@
     "framer-motion": "^12.23.22",
     "history": "^5.0.1",
     "nprogress": "^0.2.0",
-    "prettier": "^3.6.2",
+    "prettier": "^3.8.0",
     "react": "^18.3.1",
     "react-bootstrap": "^2.10.10",
     "react-dom": "^18.3.1",
